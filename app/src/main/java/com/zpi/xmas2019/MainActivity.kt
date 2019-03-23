@@ -1,12 +1,25 @@
 package com.zpi.xmas2019
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        events_btn.setOnClickListener {
+            startActivity(Intent(this, EventsActivity::class.java))
+        }
+        map_btn.setOnClickListener {
+            startActivity(Intent(this, MapAvtivity::class.java))
+        }
+        restaurants_btn.setOnClickListener {
+            startActivity(Intent(this, RestaurantsActivity::class.java))
+        }
     }
 }
+
