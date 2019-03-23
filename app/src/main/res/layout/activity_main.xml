@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+    <Button
+            android:text="Mapa"
+            android:layout_width="296dp"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/map_btn" app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="244dp" android:layout_marginBottom="30dp"
+            app:layout_constraintBottom_toTopOf="@+id/events_btn"/>
+    <Button
+            android:text="Wydarzenia"
+            android:layout_width="296dp"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/events_btn" app:layout_constraintHorizontal_bias="0.504"
+            app:layout_constraintTop_toBottomOf="@+id/map_btn" android:layout_marginBottom="35dp"
+            app:layout_constraintBottom_toTopOf="@+id/restaurants_btn"/>
+    <Button
+            android:text="Restauracje"
+            android:layout_width="296dp"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/restaurants_btn" app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintTop_toBottomOf="@+id/events_btn"
+            android:layout_marginBottom="281dp"/>
+</android.support.constraint.ConstraintLayout>
