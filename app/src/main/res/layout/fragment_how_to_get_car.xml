@@ -6,18 +6,24 @@
                                              android:layout_width="match_parent"
                                              android:layout_height="match_parent"
                                              tools:context=".HowToGetCar">
-
+    <fragment
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/map2"
+            tools:context=".GMapsActivity"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            android:layout_marginBottom="150dp" app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0.0"/>
     <TextView
-            android:id="@+id/section_label"
+            android:text="Przejdź do nawigacji w Google Maps"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:layout_constraintTop_creator="1"
-            android:layout_marginStart="@dimen/activity_horizontal_margin"
-            android:layout_marginEnd="@dimen/activity_horizontal_margin"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:layout_marginBottom="@dimen/activity_vertical_margin"
-            tools:layout_constraintLeft_creator="1"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/constraintLayout"/>
-
+            android:layout_height="17dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/open_googlemaps_link"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/map2" app:layout_constraintVertical_bias="0.24000001"/>
 </android.support.constraint.ConstraintLayout>

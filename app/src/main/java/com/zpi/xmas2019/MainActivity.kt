@@ -11,6 +11,7 @@ class MainActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
         title="Lokalizacja";
         events_btn.setOnClickListener {
             startActivity(Intent(this, EventsActivity::class.java))
