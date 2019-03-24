@@ -7,27 +7,64 @@
     <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="5dp"
     >
         <LinearLayout android:layout_width="match_parent"
-                      android:layout_height="match_parent"
-                      android:orientation="vertical"
+                      android:layout_height="wrap_content"
+                      android:orientation="horizontal"
+                      android:layout_gravity="center_vertical"
                       android:padding="10dp"
         >
+            <!--<ImageView android:layout_width="60dp"
+                       android:layout_height="60dp"
+                       android:src="@mipmap/ic_launcher"
+                       android:layout_margin="5dp"
+            />-->
+            <RelativeLayout
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp">
 
-            <TextView android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      android:id="@+id/ID_recycleView_maintext"
-                      android:text="Hardcore text"
-                      android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-            />
-            <TextView android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      android:text="sub Hard core text"
-                      android:id="@+id/ID_recycleView_subtext"
-                      android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-            />
+                <ImageView
+                        android:id="@+id/ID_recycleView_mainImage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/green_rectangle_1"/>
 
+                <TextView
+                        android:id="@+id/ID_recycleView_mainImage_date"
+                        android:layout_width="43dp"
+                        android:layout_height="44dp"
+                        android:layout_alignLeft="@id/ID_recycleView_mainImage"
+                        android:layout_alignTop="@id/ID_recycleView_mainImage"
+                        android:layout_alignRight="@id/ID_recycleView_mainImage"
+                        android:layout_alignBottom="@+id/ID_recycleView_mainImage"
+                        android:gravity="center"
+                        android:text="23/01 2019"
+                        android:autoSizeTextType="none"
+                        android:textColor="#FFFF" android:layout_marginTop="1dp" android:layout_marginStart="5dp"
+                        android:layout_marginEnd="4dp" android:layout_marginBottom="1dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="4dp" android:textStyle="bold" android:layout_alignParentEnd="true"
+                        android:layout_alignParentStart="true"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="10dp"
+            >
+                <TextView android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_centerInParent="true"
+                          android:layout_alignParentTop="true"
+                          android:id="@+id/ID_recycleView_maintext"
+                          android:text="Hardcoded text"
+                          android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                          android:typeface="normal" android:textStyle="bold|italic" android:textAlignment="center"
+                          android:textAllCaps="false"/>
+
+
+            </RelativeLayout>
         </LinearLayout>
 
     </android.support.v7.widget.CardView>
