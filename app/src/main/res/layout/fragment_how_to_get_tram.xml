@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             xmlns:app="http://schemas.android.com/apk/res-auto"
+                                             xmlns:tools="http://schemas.android.com/tools"
+                                             android:id="@+id/constraintLayout"
+                                             android:layout_width="match_parent"
+                                             android:layout_height="match_parent"
+                                             tools:context=".HowToGetTram">
+    <TextView
+            android:text="tramwaje nr 3, 6, 7 "
+            android:layout_width="wrap_content"
+            android:layout_height="17dp"
+            android:id="@+id/textView19"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/textView20" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            app:layout_constraintHorizontal_bias="0.0"/>
+    <View
+            android:id="@+id/divider6"
+            android:layout_width="0dp"
+            android:layout_height="5dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp" app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintTop_toBottomOf="@+id/textView19" android:layout_marginTop="16dp"/>
+    <TextView
+            android:text="do Uniwersytetu Wrocławskiego "
+            android:layout_width="167dp"
+            android:layout_height="16dp"
+            android:id="@+id/textView20"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            android:layout_marginStart="16dp" app:layout_constraintTop_toBottomOf="@+id/divider4"
+            android:layout_marginTop="16dp"/>
+    <TextView
+            android:text="tramwaje nr 6, 7 "
+            android:layout_width="wrap_content"
+            android:layout_height="17dp"
+            android:id="@+id/textView15"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/textView16" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            app:layout_constraintHorizontal_bias="0.0"/>
+    <View
+            android:id="@+id/divider4"
+            android:layout_width="0dp"
+            android:layout_height="5dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp" app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintTop_toBottomOf="@+id/textView15" android:layout_marginTop="24dp"/>
+    <TextView
+            android:text="na ul. Szewską "
+            android:layout_width="167dp"
+            android:layout_height="16dp"
+            android:id="@+id/textView16"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp" app:layout_constraintTop_toBottomOf="@+id/divider3"/>
+    <TextView
+            android:text="tramwaje nr 3, 4, 10, 23, 33 "
+            android:layout_width="wrap_content"
+            android:layout_height="17dp"
+            android:id="@+id/textView13"
+            app:layout_constraintTop_toBottomOf="@+id/textView14" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            app:layout_constraintHorizontal_bias="0.0" android:layout_marginTop="8dp"/>
+    <View
+            android:id="@+id/divider3"
+            android:layout_width="0dp"
+            android:layout_height="5dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp" app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintTop_toBottomOf="@+id/textView13" android:layout_marginTop="24dp"/>
+    <TextView
+            android:text="na ul. Świdnicka "
+            android:layout_width="167dp"
+            android:layout_height="16dp"
+            android:id="@+id/textView14"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp" app:layout_constraintTop_toBottomOf="@+id/divider2"/>
+    <TextView
+            android:text="do Galerii Dominikańskiej "
+            android:layout_width="167dp"
+            android:layout_height="16dp"
+            android:id="@+id/textView3" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp" android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintVertical_bias="0.0" android:layout_marginTop="16dp" android:layout_marginStart="16dp"/>
+    <TextView
+            android:text="tramwaje nr 2, 3, 4, 8, 9, 10, 11, 17, 23, 33 "
+            android:layout_width="wrap_content"
+            android:layout_height="17dp"
+            android:id="@+id/textView12"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/textView3" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            app:layout_constraintHorizontal_bias="0.0"/>
+    <View
+            android:id="@+id/divider2"
+            android:layout_width="0dp"
+            android:layout_height="5dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp" app:layout_constraintTop_toBottomOf="@+id/textView12"
+            android:layout_marginTop="20dp" app:layout_constraintHorizontal_bias="0.0"/>
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             xmlns:app="http://schemas.android.com/apk/res-auto"
+                                             xmlns:tools="http://schemas.android.com/tools"
+                                             android:id="@+id/constraintLayout"
+                                             android:layout_width="match_parent"
+                                             android:layout_height="match_parent"
+                                             tools:context=".HowToGetBus">
+
+    <TextView
+            android:text="tramwaje nr 2, 3, 4, 8, 9, 10, 11, 17, 23, 33 "
+            android:layout_width="wrap_content"
+            android:layout_height="17dp"
+            android:id="@+id/textView39"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintTop_toBottomOf="@+id/textView40"/>
+    <View
+            android:id="@+id/divider16"
+            android:layout_width="0dp"
+            android:layout_height="5dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/textView39"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="32dp"
+            app:layout_constraintHorizontal_bias="0.0" android:layout_marginTop="16dp"
+    />
+    <TextView
+            android:text="do Galerii Dominikańskiej "
+            android:layout_width="167dp"
+            android:layout_height="16dp"
+            android:id="@+id/textView40"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            android:layout_marginStart="16dp" app:layout_constraintTop_toBottomOf="@+id/divider15"
+            android:layout_marginTop="16dp"/>
+    <TextView
+            android:text="do Galerii Dominikańskiej "
+            android:layout_width="167dp"
+            android:layout_height="16dp"
+            android:id="@+id/textView37"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            android:layout_marginStart="16dp" app:layout_constraintTop_toBottomOf="@+id/divider14"
+            android:layout_marginTop="16dp"/>
+    <TextView
+            android:text="tramwaje nr 2, 3, 4, 8, 9, 10, 11, 17, 23, 33 "
+            android:layout_width="wrap_content"
+            android:layout_height="17dp"
+            android:id="@+id/textView38"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintTop_toBottomOf="@+id/textView37"/>
+    <View
+            android:id="@+id/divider15"
+            android:layout_width="0dp"
+            android:layout_height="5dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/textView38"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="32dp"
+            app:layout_constraintHorizontal_bias="0.0" android:layout_marginTop="16dp"
+    />
+    <TextView
+            android:text="tramwaje nr 2, 3, 4, 8, 9, 10, 11, 17, 23, 33 "
+            android:layout_width="wrap_content"
+            android:layout_height="17dp"
+            android:id="@+id/textView35"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            app:layout_constraintHorizontal_bias="0.0" android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"/>
+    <View
+            android:id="@+id/divider14"
+            android:layout_width="0dp"
+            android:layout_height="5dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="16dp" app:layout_constraintTop_toBottomOf="@+id/textView36"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="32dp"/>
+    <TextView
+            android:text="do Galerii Dominikańskiej "
+            android:layout_width="167dp"
+            android:layout_height="16dp"
+            android:id="@+id/textView36"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            android:layout_marginStart="16dp" app:layout_constraintTop_toBottomOf="@+id/textView35"
+            android:layout_marginTop="8dp"/>
+
+</android.support.constraint.ConstraintLayout>
