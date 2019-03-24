@@ -7,4 +7,10 @@
         android:layout_height="match_parent"
         tools:context=".EventsActivity">
 
+    <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerViewEvents"
+            android:layout_width="419dp"
+            android:layout_height="655dp" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="4dp"/>
 </android.support.constraint.ConstraintLayout>
