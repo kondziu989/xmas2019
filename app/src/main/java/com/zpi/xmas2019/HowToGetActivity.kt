@@ -32,8 +32,7 @@ class HowToGetActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_how_to_get)
-        title = "Dojazd"
-
+        toolbar.title = "Dojazd"
         setSupportActionBar(toolbar)
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.

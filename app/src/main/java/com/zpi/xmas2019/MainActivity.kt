@@ -11,6 +11,7 @@ class MainActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
         title="Lokalizacja";
         events_btn.setOnClickListener {
             startActivity(Intent(this, EventsActivity::class.java))
@@ -26,6 +27,9 @@ class MainActivity : AppCompatActivity(){
         }
         location_link.setOnClickListener {
             startActivity(Intent(this, LocationActivity::class.java))
+        }
+        media_link.setOnClickListener{
+            startActivity(Intent(this, GalleryActivity::class.java))
         }
     }
 }
