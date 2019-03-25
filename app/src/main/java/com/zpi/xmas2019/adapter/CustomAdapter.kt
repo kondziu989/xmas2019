@@ -1,6 +1,14 @@
 package com.zpi.xmas2019.adapter
 
+import android.graphics.Color
+import android.os.Build
+import android.support.annotation.RequiresApi
 import android.support.v7.widget.RecyclerView
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.Spanned
+import android.text.style.BackgroundColorSpan
+import android.text.style.ForegroundColorSpan
 import android.view.LayoutInflater
 import android.view.TextureView
 import android.view.View
@@ -23,12 +31,23 @@ data class CustomAdapter(val eventsList: ArrayList<Event>) : RecyclerView.Adapte
         return eventsList.size
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)//required APIs min 29 for dayOfMonth...
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         //Here we return events from eventsList to layout with RecycleView_list
         val event: Event = eventsList[position]
 
+        //Show date work
         holder.textViewMainText.text = event.name
-        holder.mainImageDate.text = (event.date.toString())
+
+        val day = event.date.dayOfMonth.toString()
+        var month = SpannableString(event.date.monthValue.toString())
+        month.setSpan(ForegroundColorSpan(Color.YELLOW),0,month.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        val year = event.date.year.toString()
+
+        holder.mainImageDate.text = ""
+        holder.mainImageDate.append(day)
+        holder.mainImageDate.append(month)
+        holder.mainImageDate.append("\n".plus(year))
     }
 
 
