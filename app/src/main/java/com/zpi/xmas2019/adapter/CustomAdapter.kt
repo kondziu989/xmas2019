@@ -17,6 +17,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.zpi.xmas2019.R
 import com.zpi.xmas2019.model.Event
+import java.util.*
 
 //CustomerAdapter which extend RecycleView.Adapter and get as argument listOfEvents
 data class CustomAdapter(val eventsList: ArrayList<Event>) : RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
@@ -39,10 +40,11 @@ data class CustomAdapter(val eventsList: ArrayList<Event>) : RecyclerView.Adapte
         //Show date work
         holder.textViewMainText.text = event.name
 
-        val day = event.date.dayOfMonth.toString()
-        var month = SpannableString(event.date.monthValue.toString())
+
+        val day = event.date.get(Calendar.DAY_OF_MONTH).toString()
+        var month = SpannableString(event.date.get(Calendar.MONTH).toString())
         month.setSpan(ForegroundColorSpan(Color.YELLOW),0,month.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-        val year = event.date.year.toString()
+        val year = event.date.get(Calendar.YEAR).toString()
 
         holder.mainImageDate.text = ""
         holder.mainImageDate.append(day)

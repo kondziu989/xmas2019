@@ -15,6 +15,7 @@ import com.zpi.xmas2019.adapter.CustomAdapter
 import com.zpi.xmas2019.model.Event
 import kotlinx.android.synthetic.main.activity_events.*
 import java.lang.Exception
+import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.util.*
@@ -48,9 +49,13 @@ class EventsActivity : AppCompatActivity() {
 
         val events = ArrayList<Event>()
 
-        var formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+
+        /*var formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         var date = LocalDate.parse("31-12-2018", formatter);
-        println(date)
+        println(date)*/
+        val date = Calendar.getInstance()
+        val sdf = SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy", Locale.ENGLISH)
+        date.time = sdf.parse("Mon Mar 14 16:02:37 GMT 2011")//
 
         events.add(Event("Event name", date))
         events.add(Event("Event name", date))
