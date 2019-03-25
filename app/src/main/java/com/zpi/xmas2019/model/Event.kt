@@ -4,4 +4,4 @@ import java.time.LocalDate
 import java.time.LocalDateTime
 import java.util.*
 
-data class Event(val name:String = "Unknown name", var date: LocalDate)
+data class Event(val name:String = "Unknown name", var date: Calendar)
