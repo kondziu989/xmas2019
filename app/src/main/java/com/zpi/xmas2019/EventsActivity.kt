@@ -109,7 +109,8 @@ class EventsActivity : AppCompatActivity() {
         when (item?.itemId) {
             R.id.menu_calendar_button -> {
                 println("calendar button was clicked")
-                popupCalendar()
+                //popupCalendar()
+                startActivity((Intent(this, Events_ActivityCalendar::class.java)))
                 //startActivity((Intent(this, MainActivity::class.java)))
                 return true
             }
