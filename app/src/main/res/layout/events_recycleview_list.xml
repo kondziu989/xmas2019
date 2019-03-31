@@ -6,7 +6,7 @@
 
     <android.support.v7.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
     >
         <LinearLayout android:layout_width="match_parent"
                       android:layout_height="wrap_content"
@@ -84,34 +84,43 @@
             </RelativeLayout>
 
             <RelativeLayout android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_margin="3dp"
                             android:layout_gravity="center"
             >
-                <TextView android:layout_width="39dp"
+                <TextView android:layout_width="40dp"
                           android:layout_height="wrap_content"
-                          android:layout_alignParentTop="true"
                           android:id="@+id/ID_recycleView_hour"
                           android:text="17:00"
                           android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
                           android:typeface="normal" android:textStyle="bold|italic" android:textAlignment="viewStart"
-                          android:textAllCaps="false" android:layout_centerVertical="true"
-                          android:layout_marginTop="17dp" android:layout_alignParentEnd="true"
-                          android:layout_marginEnd="286dp" android:layout_alignParentStart="true"
-                          android:layout_marginStart="0dp" android:textSize="14sp" android:textColor="#D8E109"/>
-                <TextView android:layout_width="279dp"
-                          android:layout_height="match_parent"
+                          android:textAllCaps="false"
+                          android:layout_alignParentStart="true"
+                          android:layout_marginStart="2dp" android:textSize="14sp" android:textColor="#D8E109"
+                          android:layout_marginTop="1dp" android:layout_below="@+id/ID_recycleView_hour2"/>
+                <TextView android:layout_width="40dp"
+                          android:layout_height="wrap_content"
+                          android:id="@+id/ID_recycleView_hour2"
+                          android:text="czas"
+                          android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                          android:typeface="normal" android:textStyle="bold|italic" android:textAlignment="center"
+                          android:textAllCaps="false"
+                          android:layout_alignParentStart="true"
+                          android:layout_marginStart="2dp" android:textSize="14sp" android:textColor="#D8E109"
+                          android:layout_marginTop="3dp" android:layout_alignParentTop="true"/>
+                <TextView android:layout_width="261dp"
+                          android:layout_height="wrap_content"
                           android:layout_alignParentTop="true"
                           android:gravity="center"
                           android:id="@+id/ID_recycleView_maintext"
                           android:text="Hardcoded text"
                           android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-                          android:typeface="normal" android:textStyle="bold|italic" android:textAlignment="viewStart"
+                          android:typeface="normal" android:textStyle="bold|italic"
                           android:textAllCaps="false" android:layout_centerVertical="true"
-                          android:layout_marginTop="0dp" android:layout_alignParentEnd="true"
+                          android:layout_marginTop="10dp" android:layout_alignParentEnd="true"
                           android:layout_marginEnd="4dp"
-                          android:layout_marginStart="42dp" android:layout_alignStart="@+id/ID_recycleView_hour"
-                          android:textSize="18sp"/>
+                          android:layout_marginStart="50dp" android:layout_alignStart="@+id/ID_recycleView_hour"
+                          android:textSize="18sp" android:textAlignment="textStart"/>
 
 
             </RelativeLayout>
