@@ -17,7 +17,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.zpi.xmas2019.R
 import com.zpi.xmas2019.model.Event
+import java.time.format.DateTimeFormatter
 import java.util.*
+import java.util.EnumSet.range
 
 //CustomerAdapter which extend RecycleView.Adapter and get as argument listOfEvents
 data class CustomAdapter(val eventsList: ArrayList<Event>) : RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
@@ -32,7 +34,6 @@ data class CustomAdapter(val eventsList: ArrayList<Event>) : RecyclerView.Adapte
         return eventsList.size
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)//required APIs min 29 for dayOfMonth...
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         //Here we return events from eventsList to layout with RecycleView_list
         val event: Event = eventsList[position]
@@ -41,23 +42,27 @@ data class CustomAdapter(val eventsList: ArrayList<Event>) : RecyclerView.Adapte
         holder.textViewMainText.text = event.name
 
 
-        val day = event.date.get(Calendar.DAY_OF_MONTH).toString()
-        var month = SpannableString(event.date.get(Calendar.MONTH).toString())
-        month.setSpan(ForegroundColorSpan(Color.YELLOW),0,month.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-        val year = event.date.get(Calendar.YEAR).toString()
 
-        holder.mainImageDate.text = ""
-        holder.mainImageDate.append(day)
-        holder.mainImageDate.append(month)
-        holder.mainImageDate.append("\n".plus(year))
+        val day = String.format("%02d",event.date.get(Calendar.DAY_OF_MONTH))
+        val month = String.format("%02d", event.date.get(Calendar.MONTH) + 1)
+        val year = String.format("%02d", event.date.get(Calendar.YEAR))
+        val time = String.format("%02d", event.date.get(Calendar.HOUR_OF_DAY)) + ":" + String.format("%02d", event.date.get(Calendar.MINUTE))
+
+        holder.mainImageDay.text = day
+        holder.mainImageMonth.text = month
+        holder.mainImageYear.text = year
+        holder.textViewMainTime.text = time
     }
 
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         //change View holder = single element inside recycle view
         val textViewMainText = itemView.findViewById(R.id.ID_recycleView_maintext) as TextView
-        val mainImage = itemView.findViewById(R.id.ID_recycleView_mainImage) as ImageView
-        val mainImageDate = itemView.findViewById(R.id.ID_recycleView_mainImage_date) as TextView
+        val textViewMainTime = itemView.findViewById(R.id.ID_recycleView_hour) as TextView
+        val mainImageDay = itemView.findViewById(R.id.ID_recycleView_mainImage_day) as TextView
+        val mainImageMonth = itemView.findViewById(R.id.ID_recycleView_mainImage_month) as TextView
+        val mainImageYear = itemView.findViewById(R.id.ID_recycleView_mainImage_year) as TextView
     }
 
 }
+
