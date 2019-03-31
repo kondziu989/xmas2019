@@ -1,5 +1,6 @@
 package com.zpi.xmas2019
 
+import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.support.v7.app.AppCompatActivity
@@ -9,9 +10,11 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.transition.Slide
 import android.transition.TransitionManager
+import android.transition.Visibility
 import android.view.*
 import android.widget.*
 import com.zpi.xmas2019.adapter.CustomAdapter
+import com.zpi.xmas2019.adapter.RecyclerItemClickListener
 import com.zpi.xmas2019.model.Event
 import kotlinx.android.synthetic.main.activity_events.*
 import java.lang.Exception
@@ -23,69 +26,95 @@ import java.util.*
 class EventsActivity : AppCompatActivity() {
     private lateinit var btnClosePopup : Button
     private lateinit var popupWindow : PopupWindow
+    private var chosenDate: IntArray? = intArrayOf(0,0,0)
+    private var chosenArrayEvents = ArrayList<Event>()
+    private var events = ArrayList<Event>()
 
 
-    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_events)
-
-        //setting toolbar
-        //setSupportActionBar(findViewById(R.id.toolbar))
-        //home navigation
-        //supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        //load actionbar
+        //Change name in action bar
         changeActionBar()
-
-        // Set a click listener for popup's button widget
-
-
-
+        //show all button for events
+        val showAllEvents:View = findViewById(R.id.ID_showAll)
 
         //Create recyclerView and bind it with our main RecyclerView from layout
-        val recyclerView = findViewById(R.id.recyclerViewEvents) as RecyclerView
+        val recyclerView = findViewById<RecyclerView>(R.id.recyclerViewEvents)
+        recyclerView.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false) as RecyclerView.LayoutManager?
 
-        recyclerView.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
+        //Fulfill events array, tworzy za kazdym razem
+        createEvents()
 
-        val events = ArrayList<Event>()
+        //get chosenDate from Calendar
+        chosenDate = intent.getIntArrayExtra("ChosenDate")
+
+        //Customer adapter for RecuclerView
+        //var adapter::CustomAdapter = CustomAdapter(events)
+
+        //if chosen date null or year = 0 return all events else return events from chosen day
+        if (chosenDate != null && chosenDate!![2] != 0) {
+            showAllEvents.isVisible(true)
+            showEventsForChosenDate()
+            val msg = "Wydarzenia dla wybranej daty: " + String.format("%02d",chosenDate!![0]) + "/" + String.format("%02d",(chosenDate!![1] + 1)) + "/" + chosenDate!![2]
+            Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
+        } else {
+            chosenArrayEvents.addAll(events.filterNotNull())
+            showAllEvents.isVisible(false)
+            //recyclerView.adapter = CustomAdapter(events)
+        }
+
+        recyclerView.adapter = CustomAdapter(chosenArrayEvents)
+
+        //onClick showAllEvents refresh activity with unchosen Date
+        showAllEvents.setOnClickListener {
+            intent.putExtra("ChosenDate",intArrayOf(0,0,0))//change chosen date to 0,0,0
+            finish()
+            startActivity(intent)
+        }
+
+        //onClick element RecyclerView
+        recyclerView.addOnItemTouchListener(
+            RecyclerItemClickListener(this,recyclerView,
+                object : RecyclerItemClickListener.OnItemClickListener {
+                    override fun onItemClick(view: View, position: Int) {
+                        val intent = Intent(this@EventsActivity, Events_ActivityItem::class.java)
+                        intent.putExtra("chosenEvent", chosenArrayEvents[position])
+                        startActivity(intent)
+                    }
+
+                    override fun onLongItemClick(view: View?, position: Int) {
+                        toast("Don't hold it sooooo logn!!!!!!!!!!!!!!!!!!!!!!!!")
+                    }
+                }
+            )
+        )
+
+    }
 
 
-        /*var formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        var date = LocalDate.parse("31-12-2018", formatter);
-        println(date)*/
-        val date = Calendar.getInstance()
-        val sdf = SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy", Locale.ENGLISH)
-        date.time = sdf.parse("Mon Mar 14 16:02:37 GMT 2011")//
-
-        events.add(Event("Event name", date))
-        events.add(Event("Event name", date))
-        events.add(Event("Event name", date))
-        events.add(Event("Event name", date))
-        events.add(Event("Event name", date))
-        events.add(Event("Event name", date))
-        events.add(Event("Event name", date))
-        events.add(Event("Event name", date))
-        events.add(Event("Event name", date))
-        events.add(Event("Event name", date))
-        events.add(Event("Event name", date))
-        events.add(Event("Event name", date))
 
 
-        val adapter = CustomAdapter(events)
-        recyclerView.adapter = adapter
+    //Toast for context
+    fun Context.toast(message: CharSequence) =
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
 
-        /*if (btnClosePopup != null) {
-            btnClosePopup.setOnClickListener {
-            // Dismiss the popup window
-            popupWindow.dismiss()
-        }*/
+    private fun showEventsForChosenDate() {
+        events.forEach {
+            if (it.date.get(Calendar.DAY_OF_MONTH) == chosenDate!![0] && it.date.get(Calendar.MONTH) == chosenDate!![1]
+                && it.date.get(Calendar.YEAR) == chosenDate!![2])
+            {
+                chosenArrayEvents.add(it)
+            }
+        }
+    }
 
+    private fun View.isVisible(visible: Boolean) {
+        visibility = if(visible) View.VISIBLE else View.GONE
     }
 
     //Manage action bar
     private fun changeActionBar() {
-
-
         // Now get the support action bar
         val actionBar = supportActionBar
 
@@ -95,7 +124,6 @@ class EventsActivity : AppCompatActivity() {
         // Set action bar elevation
         actionBar.elevation = 4.0F
     }
-
 
     //Add buttons to action bar
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -125,7 +153,38 @@ class EventsActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    private fun popupCalendar() {
+    private fun createEvents() {
+        val date = Calendar.getInstance()
+        val date1 = Calendar.getInstance()
+        val date2 = Calendar.getInstance()
+        val date3 = Calendar.getInstance()
+        val date4 = Calendar.getInstance()
+        val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH)
+        date.time = sdf.parse("2019-04-01 16:30:37")
+        date1.time = sdf.parse("2019-04-02 16:02:37")
+        date2.time = sdf.parse("2019-04-03 16:10:37")
+        date3.time = sdf.parse("2019-04-04 16:15:37")
+        date4.time = sdf.parse("2019-03-31 16:15:37")
+
+
+        events.add(Event("Event name1", date1))
+        events.add(Event("Event name2", date2))
+        events.add(Event("Event name3", date3))
+        events.add(Event("Event name4", date3))
+        events.add(Event("Event name5", date3))
+        events.add(Event("Event name6", date2))
+        events.add(Event("Event name7", date2))
+        events.add(Event("Event name8", date1))
+        events.add(Event("Event name8", date))
+        events.add(Event("Event name9", date))
+        events.add(Event("Event name11", date))
+        events.add(Event("Event name12", date))
+        events.add(Event("Event name12", date))
+        events.add(Event("Event name12", date))
+        events.add(Event("Event name12", date4))
+        events.add(Event("Event name12", date4))
+    }
+/* private fun popupCalendar() {
         try {
             // We need to get the instance of the LayoutInflater
             val layoutInflater:LayoutInflater = LayoutInflater.from(applicationContext)
@@ -158,7 +217,7 @@ class EventsActivity : AppCompatActivity() {
             val calendar = view.findViewById<CalendarView>(R.id.ID_calendarView)
             btnClosePopup = view.findViewById<Button>(R.id.ID_calendar_cancel)
 
-            calendar?.setOnDateChangeListener { view, year, month, dayOfMonth ->
+            calendar?.setOnDateChangeListener { _, year, month, dayOfMonth ->
                 // Note that months are indexed from 0. So, 0 means January, 1 means february, 2 means march etc.
                 val msg = "Selected date is " + dayOfMonth + "/" + (month + 1) + "/" + year
                 Toast.makeText(this@EventsActivity, msg, Toast.LENGTH_SHORT).show()
@@ -182,6 +241,7 @@ class EventsActivity : AppCompatActivity() {
         e.printStackTrace()
     }
 
-}
+}*/
+
 }
 

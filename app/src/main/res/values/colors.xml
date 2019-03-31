@@ -13,5 +13,6 @@
 
 
     <color name="colorOfMainHeader">#F4BD37</color>
+    <color name="colorOfEventsShowAll">#278c00</color>
 
 </resources>
