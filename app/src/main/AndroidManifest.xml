@@ -49,7 +49,7 @@
         </activity>
         <activity android:name=".RestaurantsActivity">
         </activity>
-        <activity android:name=".MapActivity">
+        <activity android:name=".MarketMapsActivity">
         </activity>
         <activity android:name=".EventsActivity" android:parentActivityName=".MainActivity"/>
         <activity android:name=".EventsActivityMoreInf" android:parentActivityName=".EventsActivity"/>
