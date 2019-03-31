@@ -11,10 +11,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.Button
-import android.widget.LinearLayout
-import android.widget.PopupWindow
-import android.widget.Toast
+import android.widget.*
 import com.zpi.xmas2019.adapter.CustomAdapter
 import com.zpi.xmas2019.adapter.RecyclerItemClickListener
 import com.zpi.xmas2019.model.Event
@@ -33,7 +30,19 @@ class Events_ActivityItem : AppCompatActivity() {
 
         chosenEvent = intent.getSerializableExtra("chosenEvent") as Event
 
-        toast(chosenEvent.toString())
+        val eventImage = findViewById<ImageView>(R.id.ID_chosen_eventImage)
+        val eventName = findViewById<TextView>(R.id.ID_chosen_eventName)
+        val eventDescription = findViewById<TextView>(R.id.ID_chosen_eventDescription)
+
+        eventName.text = chosenEvent.name
+        eventImage.setImageDrawable(resources.getDrawable(R.drawable.jarmark1))
+        eventDescription.text = "Pokazy \"Pomocników Szalonego Mikołaja\"\n" +
+                "Realizowane w Movie Gate - Galeria Sztuki Filmowej zlokalizowana w podziemnym schronie na Placu Solnym dla osób indywidualnych i grup zorganizowanych\n" +
+                "poniedziałek - czwartek: godz. 11:00, 13:00, 15:00, 17:00\n" +
+                "piątek - niedziela: godz. 11:00, 13:00, 15:00, 17:00, 19:00\n" +
+                "rezerwacje, cennik i więcej informacji na www.moviegate.pl"
+
+        //toast(chosenEvent.toString())
 
 
 
@@ -79,7 +88,6 @@ class Events_ActivityItem : AppCompatActivity() {
                 return true
             }
         }
-
         return super.onOptionsItemSelected(item)
     }
 

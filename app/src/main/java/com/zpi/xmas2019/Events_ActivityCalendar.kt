@@ -33,7 +33,7 @@ class Events_ActivityCalendar : Activity() {
         val calendar = findViewById<CalendarView>(R.id.ID_calendarView)
 
         calendar?.setOnDateChangeListener { view, year, month, dayOfMonth ->
-            val msg = "Selected date is " + String.format("%02d",dayOfMonth) + "/" + String.format("%02d",(month + 1)) + "/" + year
+            val msg = "Została wybrana data: " + String.format("%02d",dayOfMonth) + "/" + String.format("%02d",(month + 1)) + "/" + year
             Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
             chosenDate = intArrayOf(dayOfMonth,month,year)
         }
