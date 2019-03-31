@@ -12,11 +12,11 @@
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
     <string name="tab_text_3">Tab 3</string>
-  
+
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>
-  
-  
+
+
     <string name="title_activity_gmaps">Map</string>
 
 </resources>
