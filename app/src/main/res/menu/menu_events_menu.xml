@@ -3,14 +3,14 @@
 
     <item
             android:id="@+id/menu_calendar_button"
-            android:icon="@drawable/calendar_button"
+            android:icon="@drawable/calendar_icon"
             android:title="Calendar button"
             app:showAsAction="always"
     />
 
     <item
         android:id="@+id/menu_information_button"
-        android:icon="@drawable/inf_icon"
+        android:icon="@drawable/information_icon"
         android:title="Information button"
         app:showAsAction="always"
     />

@@ -27,7 +27,7 @@ class Events_ActivityCalendar : Activity() {
 
 
 
-        window.setLayout((width*.75).toInt(),(heigh*.5).toInt())
+        window.setLayout((width*.75).toInt(),(heigh*.65).toInt())
 
 
         val calendar = findViewById<CalendarView>(R.id.ID_calendarView)
