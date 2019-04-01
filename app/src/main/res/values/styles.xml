@@ -8,6 +8,7 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="windowActionBar">true</item>
         <item name="windowNoTitle">false</item>
+        <item name="android:textColor">@color/white</item>
     </style>
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
@@ -15,6 +16,46 @@
     </style>
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+
+    <style name="buttonWhite">
+        <item name="android:background">@drawable/buttonelipse</item>
+    </style>
+
+    <style name="background_img">
+        <item name="android:background">@drawable/background</item>
+    </style>
+
+
+    <!-- Calendar view -->
+    <style name="CalenderViewCustom" parent="Theme.AppCompat">
+        <item name="android:focusedMonthDateColor">@color/colorOfMainHeader</item>
+        <item name="android:colorBackground">@color/colorOfMainHeader</item>
+        <item name="colorAccent">@color/colorOfMainHeader</item>
+
+    </style>
+
+    <style name="CalenderViewDateCustomText">
+        <item name="android:focusedMonthDateColor">@color/colorOfMainHeader</item>
+        <item name="android:colorBackground">@color/colorOfMainHeader</item>
+        <item name="colorAccent">@color/colorOfMainHeader</item>
+        <item name="colorPrimary">@color/colorOfMainHeader</item>
+        <item name="android:textColor">@color/CalendarDaysColor</item>
+
+    </style>
+
+    <style name="CalenderViewWeekCustomText">
+        <item name="android:textColor">@color/CalendarWeeksColor</item>
+    </style>
+
+    <!-- Calendar view -->
+
+    <!-- Calendar popup -->
+    <style name="AppTheme.PopupTheme" >
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowCloseOnTouchOutside">true</item>
+        <item name="android:layout_gravity">top</item>
+
+    </style>
 
 
 
