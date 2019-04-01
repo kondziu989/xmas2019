@@ -48,7 +48,9 @@
                   android:parentActivityName=".EventsActivity"
         >
         </activity>
-        <activity android:name=".ContactActivity">
+        <activity android:name=".ContactActivity"
+                  android:parentActivityName=".EventsActivity"
+        >
         </activity>
         <activity android:name=".RestaurantsActivity">
         </activity>
