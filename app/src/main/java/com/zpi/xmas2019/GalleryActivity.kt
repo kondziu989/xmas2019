@@ -2,60 +2,57 @@ package com.zpi.xmas2019
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ImageView
-import android.widget.LinearLayout
+import android.support.v4.view.ViewPager
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.widget.TextView
+import com.zpi.xmas2019.adapter.GalleryImageAdapter
+import com.zpi.xmas2019.adapter.GalleryRecycleViewAdapter
 
 class GalleryActivity : AppCompatActivity() {
 
-    private val images : MutableList<Int> = mutableListOf()
+    val images : MutableList<String> = mutableListOf()
+    lateinit var imgStats : TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        title = "Galeria"
         setContentView(R.layout.activity_gallery)
 
+        for (i in 53 until 75){
+            images.add("http://www.jarmarkbozonarodzeniowy.com/images/galeria/19$i.jpg")
+        }
 
-        createImagesList(10)
-        createGallery()
-
-        val selectedImg = findViewById<ImageView>(R.id.imageView)
-        selectedImg.tag = 0
-        selectedImg.setImageResource(images[0])
-
-
-    }
-
-    private fun createGallery(){
-        val linearLayout = findViewById<LinearLayout>(R.id.imagesList)
-        val imgStats = findViewById<TextView>(R.id.imgStats)
+        imgStats = findViewById(R.id.imgStats2)
         val text = "1/${images.size}"
         imgStats.text = text
-        for(i in 0 until images.size){
-            val imageView = ImageView(this)
-            imageView.setImageResource(images[i])
-            imageView.tag = i
-            imageView.setOnClickListener { view ->
-                val currentImage = findViewById<ImageView>(R.id.imageView)
-                val selectedImgText = findViewById<TextView>(R.id.imgStats)
-                val selectedImgId  = images.get(view.tag as Int)
-                val text = "${view.tag as Int + 1}/${images.size}"
-                selectedImgText.text = text
-                currentImage.setImageResource(selectedImgId)
-            }
-            linearLayout.addView(imageView)
-        }
-    }
 
-    private fun createImagesList(size: Int){
-        val imgResId = R.mipmap.ic_launcher
-        val imgResIdRound = R.mipmap.ic_launcher_round
-        for (x in 0 until size){
-            when(x%2){
-                0 -> images.add(imgResId)
-                1 -> images.add(imgResIdRound)
+        val viewPager = findViewById<ViewPager>(R.id.galleryViewPager)
+        val viewPagerAdapter = GalleryImageAdapter(this, images)
+
+        viewPager.adapter = viewPagerAdapter
+
+
+        val layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        val recyclerView = findViewById<RecyclerView>(R.id.gallery_recycle_view)
+        recyclerView.layoutManager = layoutManager
+        val recyclerViewAdapter = GalleryRecycleViewAdapter(images, imgStats, viewPager)
+        recyclerView.adapter = recyclerViewAdapter
+
+        viewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
+
+            override fun onPageScrollStateChanged(state: Int) {
             }
-        }
+
+            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
+
+            }
+            override fun onPageSelected(position: Int) {
+                val text = "${position + 1}/${images.size}"
+                imgStats.text = text
+            }
+
+        })
+
     }
 
 }
