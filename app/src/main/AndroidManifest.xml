@@ -47,7 +47,7 @@
         </activity>
         <activity android:name=".RestaurantsActivity">
         </activity>
-        <activity android:name=".MapActivity">
+        <activity android:name=".MarketMapsActivity">
         </activity>
         <activity android:name=".EventsActivity" android:parentActivityName=".MainActivity"/>
         <activity android:name=".EventsActivityMoreInf" android:parentActivityName=".EventsActivity"/>
@@ -58,6 +58,12 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name=".Events_ActivityItem"
+                  android:parentActivityName=".EventsActivity"
+                  android:label="Najlepsze wydarzenie"
+        ></activity>
+        <activity android:name=".Events_ActivityCalendar"
+        android:theme="@style/AppTheme.PopupTheme"></activity>
     </application>
 
 </manifest>

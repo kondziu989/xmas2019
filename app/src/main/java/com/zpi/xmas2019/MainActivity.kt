@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity(){
             startActivity(Intent(this, EventsActivity::class.java))
         }
         map_btn.setOnClickListener {
-            startActivity(Intent(this, MapActivity::class.java))
+            startActivity(Intent(this, MarketMapsActivity::class.java))
         }
         restaurants_btn.setOnClickListener {
             startActivity(Intent(this, RestaurantsActivity::class.java))
