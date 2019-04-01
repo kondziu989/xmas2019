@@ -39,9 +39,13 @@
         <activity
                 android:name=".HowToGetActivity"
                 android:label="@string/title_activity_how_to_get"
-                android:theme="@style/AppTheme.NoActionBar">
+                android:theme="@style/AppTheme.NoActionBar"
+                android:parentActivityName=".EventsActivity"
+        >
         </activity>
-        <activity android:name=".LocationActivity">
+        <activity android:name=".LocationActivity"
+                  android:parentActivityName=".EventsActivity"
+        >
         </activity>
         <activity android:name=".ContactActivity">
         </activity>
