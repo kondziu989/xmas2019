@@ -14,7 +14,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="1dp"/>
+            android:layout_marginTop="1dp"
+            style="@style/background"/>
     <Button
             android:text="@string/show_all_events"
             android:layout_width="wrap_content"
