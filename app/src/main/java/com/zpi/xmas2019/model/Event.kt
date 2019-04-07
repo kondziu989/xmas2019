@@ -1,5 +1,6 @@
 package com.zpi.xmas2019.model
 
+import com.zpi.xmas2019.R
 import java.io.Serializable
 import java.time.LocalDate
 import java.time.LocalDateTime
@@ -7,9 +8,9 @@ import java.util.*
 
 data class Event(val name:String = "Unknown name", var date: Calendar) : Serializable
 {
-    val description:String = "First description"
-    val image:String = ""
-    constructor(name:String = "Unknown name",date: Calendar, description:String, image:String):this(name,date) {
+    var description:String = "First description"
+    var images : MutableList<String> = mutableListOf()
+    constructor(name:String = "Unknown name",date: Calendar, description:String, images:MutableList<String>):this(name,date) {
 
     }
 

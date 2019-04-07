@@ -2,6 +2,7 @@ package com.zpi.xmas2019
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Canvas
 import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -22,6 +23,9 @@ import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.util.*
+import android.support.v7.widget.DividerItemDecoration
+
+
 
 class EventsActivity : AppCompatActivity() {
     private lateinit var btnClosePopup : Button
@@ -42,6 +46,7 @@ class EventsActivity : AppCompatActivity() {
         //Create recyclerView and bind it with our main RecyclerView from layout
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerViewEvents)
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false) as RecyclerView.LayoutManager?
+        //recyclerView.addItemDecoration(DividerItemDecoration(this, 0)) //remove
 
         //Fulfill events array, tworzy za kazdym razem
         createEvents()
@@ -160,6 +165,8 @@ class EventsActivity : AppCompatActivity() {
         val date3 = Calendar.getInstance()
         val date4 = Calendar.getInstance()
         val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH)
+
+
         date.time = sdf.parse("2019-04-01 13:30:37")
         date1.time = sdf.parse("2019-04-02 16:02:37")
         date2.time = sdf.parse("2019-04-03 18:10:37")
@@ -182,65 +189,18 @@ class EventsActivity : AppCompatActivity() {
         events.add(Event("Wydarzenie niespodzianka", date4))
         events.add(Event("Wydarzenie niespodzianka", date4))
         events.add(Event("Oficjalne zamknięcie Jarmarku Bożonarodzeniowego.", date4))
+
+        events.forEach {e ->
+            for (i in 53 until 75){
+                e.images.add("http://www.jarmarkbozonarodzeniowy.com/images/galeria/19$i.jpg")
+            }
+            e.description = "Pokazy \"Pomocników Szalonego Mikołaja\"" +
+                    "Realizowane w Movie Gate - Galeria Sztuki Filmowej zlokalizowana w podziemnym schronie na Placu Solnym dla osób indywidualnych i grup zorganizowanych" +
+                    "poniedziałek - czwartek: godz. 11:00, 13:00, 15:00, 17:00" +
+                    "piątek - niedziela: godz. 11:00, 13:00, 15:00, 17:00, 19:00" +
+                    "rezerwacje, cennik i więcej informacji na www.moviegate.pl"
+        }
     }
-/* private fun popupCalendar() {
-        try {
-            // We need to get the instance of the LayoutInflater
-            val layoutInflater:LayoutInflater = LayoutInflater.from(applicationContext)
-
-            val view: View = layoutInflater.inflate(R.layout.popup_calendar_view,ID_events_layout,true)
-
-
-            popupWindow =  PopupWindow(view,LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT)
-
-            // Set an elevation for the popup window
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                popupWindow.elevation = 10.0F
-            }
-
-            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
-                // Create a new slide animation for popup window enter transition
-                val slideIn = Slide()
-                slideIn.slideEdge = Gravity.TOP
-                popupWindow.enterTransition = slideIn
-
-                // Slide animation for popup window exit transition
-                val slideOut = Slide()
-                slideOut.slideEdge = Gravity.RIGHT
-                popupWindow.exitTransition = slideOut
-
-            }
-
-            //popUpWindow.showAtLocation(view, Gravity.CENTER, 100,100)
-
-            val calendar = view.findViewById<CalendarView>(R.id.ID_calendarView)
-            btnClosePopup = view.findViewById<Button>(R.id.ID_calendar_cancel)
-
-            calendar?.setOnDateChangeListener { _, year, month, dayOfMonth ->
-                // Note that months are indexed from 0. So, 0 means January, 1 means february, 2 means march etc.
-                val msg = "Selected date is " + dayOfMonth + "/" + (month + 1) + "/" + year
-                Toast.makeText(this@EventsActivity, msg, Toast.LENGTH_SHORT).show()
-            }
-
-
-            // Finally, show the popup window on app
-
-            TransitionManager.beginDelayedTransition(ID_events_layout)
-            popupWindow.showAtLocation(
-                ID_events_layout, // Location to display popup window
-                Gravity.CENTER, // Exact position of layout to display popup
-                50, // X offset
-                100 // Y offset
-            )
-
-            //ID_events_layout.addView(view,1)
-
-
-    } catch (e:Exception) {
-        e.printStackTrace()
-    }
-
-}*/
 
 }
 
