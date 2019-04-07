@@ -36,19 +36,18 @@ class MarketMapsActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
 
-        // Add a marker in Sydney and move the camera
         val xMarketPosition = LatLng(51.109885, 17.032344)
         mMap.addMarker(MarkerOptions().position(xMarketPosition).title("Marker in Sydney"))
         mMap.moveCamera(CameraUpdateFactory.newLatLng(xMarketPosition))
-        val area_bounds: LatLngBounds= LatLngBounds(LatLng(51.108187, 17.029255),LatLng(51.111499, 17.035334))
+        val area_bounds: LatLngBounds= LatLngBounds(LatLng(51.107337, 17.027925), LatLng(51.112358, 17.036697))
         with(mMap){addGroundOverlay(GroundOverlayOptions().apply {
-            image(BitmapDescriptorFactory.fromResource(R.drawable.xmarket))
+            image(BitmapDescriptorFactory.fromResource(R.drawable.mapa2222))
             positionFromBounds(area_bounds)
             //transparency(0.5f)
 
             clickable(true)
         })
-            setLatLngBoundsForCameraTarget(area_bounds)
+            setLatLngBoundsForCameraTarget(LatLngBounds(LatLng(51.1078, 17.028),LatLng(51.112, 17.0355)))
             setMinZoomPreference(17f)
             isMyLocationEnabled = true
             uiSettings.setAllGesturesEnabled(true)
