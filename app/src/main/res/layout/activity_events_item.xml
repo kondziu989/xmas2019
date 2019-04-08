@@ -64,6 +64,6 @@
             android:src="@mipmap/but"
             app:backgroundTint="@color/selectedText"
             android:layout_gravity="end|bottom"
-            android:layout_margin="30dp"
+            android:layout_margin="40dp"
     />
 </android.support.design.widget.CoordinatorLayout>

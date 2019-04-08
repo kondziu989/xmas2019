@@ -38,7 +38,7 @@ class Events_ActivityItem : AppCompatActivity() {
         eventName.text = chosenEvent.name
         eventImage.setImageDrawable(resources.getDrawable(R.drawable.jarmark1,theme))
         eventDescription.text = chosenEvent.description
-       
+
         //toast(chosenEvent.toString())
         val button = findViewById<FloatingActionButton>(R.id.ID_galleryFloatingButton)
         button.setOnClickListener {

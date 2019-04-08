@@ -11,7 +11,6 @@ data class Event(val name:String = "Unknown name", var date: Calendar) : Seriali
     var description:String = "First description"
     var images : MutableList<String> = mutableListOf()
     constructor(name:String = "Unknown name",date: Calendar, description:String, images:MutableList<String>):this(name,date) {
-
     }
 
 
