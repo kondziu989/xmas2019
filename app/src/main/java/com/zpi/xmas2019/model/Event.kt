@@ -1,5 +1,6 @@
 package com.zpi.xmas2019.model
 
+import com.zpi.xmas2019.R
 import java.io.Serializable
 import java.time.LocalDate
 import java.time.LocalDateTime
