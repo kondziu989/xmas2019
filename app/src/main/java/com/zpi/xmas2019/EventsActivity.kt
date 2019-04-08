@@ -15,6 +15,7 @@ import android.view.*
 import android.widget.*
 import com.zpi.xmas2019.adapter.CustomAdapter
 import com.zpi.xmas2019.adapter.RecyclerItemClickListener
+import com.zpi.xmas2019.dummy.DummyEvents
 import com.zpi.xmas2019.model.Event
 import kotlinx.android.synthetic.main.activity_events.*
 import java.lang.Exception
@@ -44,7 +45,8 @@ class EventsActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false) as RecyclerView.LayoutManager?
 
         //Fulfill events array, tworzy za kazdym razem
-        createEvents()
+        //createEvents()
+        events.addAll(DummyEvents.EVENTS)
 
         //get chosenDate from Calendar
         chosenDate = intent.getIntArrayExtra("ChosenDate")
@@ -153,36 +155,36 @@ class EventsActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    private fun createEvents() {
-        val date = Calendar.getInstance()
-        val date1 = Calendar.getInstance()
-        val date2 = Calendar.getInstance()
-        val date3 = Calendar.getInstance()
-        val date4 = Calendar.getInstance()
-        val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH)
-        date.time = sdf.parse("2019-04-01 13:30:37")
-        date1.time = sdf.parse("2019-04-02 16:02:37")
-        date2.time = sdf.parse("2019-04-03 18:10:37")
-        date3.time = sdf.parse("2019-04-04 20:15:37")
-        date4.time = sdf.parse("2019-03-05 13:15:37")
-
-        events.add(Event("Oficjalne otwarcie Jarmarku Bożonarodzeniowego.", date))
-        events.add(Event("Magiczne Widowisko \"Święta zaklęte w bajkach", date))
-        events.add(Event("Powitanie Mikołaja.", date))
-        events.add(Event("Oficjalne rozświetlenie choinki", date2))
-        events.add(Event("Mikołajowe występy artystyczne", date2))
-        events.add(Event("Świąteczna Parada z Mikołajem z finałem na scenie przy choince", date3))
-        events.add(Event("Parada wrocławskich Elfów", date3))
-        events.add(Event("Wigilijny Korowód Kolędników", date3))
-        events.add(Event("\"Wigilia dla Samotnych i Potrzebujących\" przy akompaniamencie zespołu \"Gieni Dudki\" i zespołu \"Servoos\" - Organizator Miasto Wrocław.", date3))
-        events.add(Event("Wydarzenie artystyczne", date4))
-        events.add(Event("Szukanie czapek", date4))
-        events.add(Event("Picie wina", date4))
-        events.add(Event("Wydarzenie niespodzianka", date4))
-        events.add(Event("Wydarzenie niespodzianka", date4))
-        events.add(Event("Wydarzenie niespodzianka", date4))
-        events.add(Event("Oficjalne zamknięcie Jarmarku Bożonarodzeniowego.", date4))
-    }
+//    private fun createEvents() {
+//
+//    } val date = Calendar.getInstance()
+//    val date1 = Calendar.getInstance()
+//    val date2 = Calendar.getInstance()
+//    val date3 = Calendar.getInstance()
+//    val date4 = Calendar.getInstance()
+//    val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH)
+//    date.time = sdf.parse("2019-04-01 13:30:37")
+//    date1.time = sdf.parse("2019-04-02 16:02:37")
+//    date2.time = sdf.parse("2019-04-03 18:10:37")
+//    date3.time = sdf.parse("2019-04-04 20:15:37")
+//    date4.time = sdf.parse("2019-03-05 13:15:37")
+//
+//    events.add(Event("Oficjalne otwarcie Jarmarku Bożonarodzeniowego.", date))
+//    events.add(Event("Magiczne Widowisko \"Święta zaklęte w bajkach", date))
+//    events.add(Event("Powitanie Mikołaja.", date))
+//    events.add(Event("Oficjalne rozświetlenie choinki", date2))
+//    events.add(Event("Mikołajowe występy artystyczne", date2))
+//    events.add(Event("Świąteczna Parada z Mikołajem z finałem na scenie przy choince", date3))
+//    events.add(Event("Parada wrocławskich Elfów", date3))
+//    events.add(Event("Wigilijny Korowód Kolędników", date3))
+//    events.add(Event("\"Wigilia dla Samotnych i Potrzebujących\" przy akompaniamencie zespołu \"Gieni Dudki\" i zespołu \"Servoos\" - Organizator Miasto Wrocław.", date3))
+//    events.add(Event("Wydarzenie artystyczne", date4))
+//    events.add(Event("Szukanie czapek", date4))
+//    events.add(Event("Picie wina", date4))
+//    events.add(Event("Wydarzenie niespodzianka", date4))
+//    events.add(Event("Wydarzenie niespodzianka", date4))
+//    events.add(Event("Wydarzenie niespodzianka", date4))
+//    events.add(Event("Oficjalne zamknięcie Jarmarku Bożonarodzeniowego.", date4))
 /* private fun popupCalendar() {
         try {
             // We need to get the instance of the LayoutInflater

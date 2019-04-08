@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools" package="com.zpi.xmas2019">
+          xmlns:tools="http://schemas.android.com/tools"
+          package="com.zpi.xmas2019">
 
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
@@ -17,10 +18,10 @@
             android:label="@string/app_name"
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
-            android:theme="@style/AppTheme" tools:ignore="GoogleAppIndexingWarning">
+            android:theme="@style/AppTheme"
+            tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".GalleryActivity">
         </activity>
-
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -40,37 +41,43 @@
         <activity
                 android:name=".HowToGetActivity"
                 android:label="@string/title_activity_how_to_get"
-                android:theme="@style/AppTheme.NoActionBar"
                 android:parentActivityName=".EventsActivity"
-        >
+                android:theme="@style/AppTheme.NoActionBar">
         </activity>
-        <activity android:name=".LocationActivity"
-                  android:parentActivityName=".EventsActivity"
-        >
+        <activity
+                android:name=".LocationActivity"
+                android:parentActivityName=".EventsActivity">
         </activity>
-        <activity android:name=".ContactActivity"
-                  android:parentActivityName=".EventsActivity"
-        >
+        <activity
+                android:name=".ContactActivity"
+                android:parentActivityName=".EventsActivity">
         </activity>
         <activity android:name=".RestaurantsActivity">
         </activity>
         <activity android:name=".MarketMapsActivity">
         </activity>
-        <activity android:name=".EventsActivity" android:parentActivityName=".MainActivity"/>
-        <activity android:name=".EventsActivityMoreInf" android:parentActivityName=".EventsActivity"/>
-        <activity android:name=".MainActivity" android:theme="@style/AppTheme.NoActionBar">
+        <activity
+                android:name=".EventsActivity"
+                android:parentActivityName=".MainActivity"/>
+        <activity
+                android:name=".EventsActivityMoreInf"
+                android:parentActivityName=".EventsActivity"/>
+        <activity
+                android:name=".MainActivity"
+                android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".Events_ActivityItem"
-                  android:parentActivityName=".EventsActivity"
-                  android:label="Najlepsze wydarzenie"
-        ></activity>
-        <activity android:name=".Events_ActivityCalendar"
-        android:theme="@style/AppTheme.PopupTheme"></activity>
+        <activity
+                android:name=".Events_ActivityItem"
+                android:label="Najlepsze wydarzenie"
+                android:parentActivityName=".EventsActivity"/>
+        <activity
+                android:name=".Events_ActivityCalendar"
+                android:theme="@style/AppTheme.PopupTheme"/>
     </application>
 
 </manifest>

@@ -5,11 +5,11 @@ import java.time.LocalDate
 import java.time.LocalDateTime
 import java.util.*
 
-data class Event(val name:String = "Unknown name", var date: Calendar) : Serializable
+data class Event(val id: String,val name:String = "Unknown name", var date: Calendar, val imgUrls : MutableList<String>) : Serializable
 {
     val description:String = "First description"
     val image:String = ""
-    constructor(name:String = "Unknown name",date: Calendar, description:String, image:String):this(name,date) {
+    constructor(id: String = "1",name:String = "Unknown name",date: Calendar, description:String, image:String, imgUrls: MutableList<String>):this(id,name,date, imgUrls) {
 
     }
 

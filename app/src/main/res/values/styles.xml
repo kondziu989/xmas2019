@@ -51,7 +51,7 @@
     <!-- Calendar view -->
 
     <!-- Calendar popup -->
-    <style name="AppTheme.PopupTheme" >
+    <style name="AppTheme.PopupTheme">
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowCloseOnTouchOutside">true</item>
         <item name="android:layout_gravity">top</item>
