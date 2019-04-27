@@ -17,7 +17,7 @@
             android:layout_marginTop="1dp"
             android:background="@null"
             android:requiresFadingEdge="vertical"
-            android:fadingEdgeLength="150dp"
+            android:fadingEdgeLength="100dp"
     />
     <Button
             android:text="@string/show_all_events"

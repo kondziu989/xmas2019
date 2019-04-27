@@ -25,16 +25,15 @@ import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.util.*
 import android.support.v7.widget.DividerItemDecoration
+import android.util.AttributeSet
 
 
-
-class EventsActivity : AppCompatActivity() {
+class EventsActivity : AppCompatActivity()  {
     private lateinit var btnClosePopup: Button
     private lateinit var popupWindow: PopupWindow
     private var chosenDate: IntArray? = intArrayOf(0, 0, 0)
     private var chosenArrayEvents = ArrayList<Event>()
     private var events = ArrayList<Event>()
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,9 +55,6 @@ class EventsActivity : AppCompatActivity() {
 
         //get chosenDate from Calendar
         chosenDate = intent.getIntArrayExtra("ChosenDate")
-
-        //Customer adapter for RecuclerView
-        //var adapter::CustomAdapter = CustomAdapter(events)
 
         //if chosen date null or year = 0 return all events else return events from chosen day
         if (chosenDate != null && chosenDate!![2] != 0) {
@@ -95,13 +91,14 @@ class EventsActivity : AppCompatActivity() {
                     }
 
                     override fun onLongItemClick(view: View?, position: Int) {
-                        toast("Don't hold it sooooo logn!!!!!!!!!!!!!!!!!!!!!!!!")
+                        toast("Don't hold it sooooo long!!!!!!!!!!!!!!!!!!!!!!!!")
                     }
                 }
             )
         )
 
     }
+
 
 
     //Toast for context
@@ -162,53 +159,3 @@ class EventsActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 }
-
-//    private fun createEvents() {
-//
-//    } val date = Calendar.getInstance()
-//    val date1 = Calendar.getInstance()
-//    val date2 = Calendar.getInstance()
-//    val date3 = Calendar.getInstance()
-//    val date4 = Calendar.getInstance()
-//    val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH)
-//    date.time = sdf.parse("2019-04-01 13:30:37")
-//    date1.time = sdf.parse("2019-04-02 16:02:37")
-//    date2.time = sdf.parse("2019-04-03 18:10:37")
-//    date3.time = sdf.parse("2019-04-04 20:15:37")
-//    date4.time = sdf.parse("2019-03-05 13:15:37")
-//
-//    events.add(Event("Oficjalne otwarcie Jarmarku Bożonarodzeniowego.", date))
-//    events.add(Event("Magiczne Widowisko \"Święta zaklęte w bajkach", date))
-//    events.add(Event("Powitanie Mikołaja.", date))
-//    events.add(Event("Oficjalne rozświetlenie choinki", date2))
-//    events.add(Event("Mikołajowe występy artystyczne", date2))
-//    events.add(Event("Świąteczna Parada z Mikołajem z finałem na scenie przy choince", date3))
-//    events.add(Event("Parada wrocławskich Elfów", date3))
-//    events.add(Event("Wigilijny Korowód Kolędników", date3))
-//    events.add(Event("\"Wigilia dla Samotnych i Potrzebujących\" przy akompaniamencie zespołu \"Gieni Dudki\" i zespołu \"Servoos\" - Organizator Miasto Wrocław.", date3))
-//    events.add(Event("Wydarzenie artystyczne", date4))
-//    events.add(Event("Szukanie czapek", date4))
-//    events.add(Event("Picie wina", date4))
-//    events.add(Event("Wydarzenie niespodzianka", date4))
-//    events.add(Event("Wydarzenie niespodzianka", date4))
-//    events.add(Event("Wydarzenie niespodzianka", date4))
-//    events.add(Event("Oficjalne zamknięcie Jarmarku Bożonarodzeniowego.", date4))
-/* private fun popupCalendar() {
-        try {
-            // We need to get the instance of the LayoutInflater
-            val layoutInflater:LayoutInflater = LayoutInflater.from(applicationContext)
-
-        events.forEach {e ->
-            for (i in 53 until 75){
-                e.images.add("http://www.jarmarkbozonarodzeniowy.com/images/galeria/19$i.jpg")
-            }
-            e.description = "Pokazy \"Pomocników Szalonego Mikołaja\"" +
-                    "Realizowane w Movie Gate - Galeria Sztuki Filmowej zlokalizowana w podziemnym schronie na Placu Solnym dla osób indywidualnych i grup zorganizowanych" +
-                    "poniedziałek - czwartek: godz. 11:00, 13:00, 15:00, 17:00" +
-                    "piątek - niedziela: godz. 11:00, 13:00, 15:00, 17:00, 19:00" +
-                    "rezerwacje, cennik i więcej informacji na www.moviegate.pl"
-//        }
-//    }
-//
-//}
-        */

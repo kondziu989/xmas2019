@@ -13,7 +13,6 @@ import kotlinx.android.synthetic.main.activity_events_moreinf.*
 
 class EventsActivityMoreInf : AppCompatActivity() {
 
-    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_events_moreinf)
