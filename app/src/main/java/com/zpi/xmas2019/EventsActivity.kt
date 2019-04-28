@@ -26,6 +26,8 @@ import java.time.format.DateTimeFormatter
 import java.util.*
 import android.support.v7.widget.DividerItemDecoration
 import android.util.AttributeSet
+import com.zpi.xmas2019.dummy.DummyStalls
+import kotlin.collections.ArrayList
 
 
 class EventsActivity : AppCompatActivity()  {
@@ -34,6 +36,7 @@ class EventsActivity : AppCompatActivity()  {
     private var chosenDate: IntArray? = intArrayOf(0, 0, 0)
     private var chosenArrayEvents = ArrayList<Event>()
     private var events = ArrayList<Event>()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

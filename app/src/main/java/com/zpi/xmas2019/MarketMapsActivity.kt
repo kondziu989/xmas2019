@@ -3,6 +3,7 @@ package com.zpi.xmas2019
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
@@ -13,17 +14,18 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
+import com.zpi.xmas2019.dummy.DummyStalls
 
 
 class MarketMapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
-    private var showAll: Boolean = true
+    private var showAll: Boolean = false
     private var showFood: Boolean = false
     private var showBeauty: Boolean = false
     private var showXmas: Boolean = false
     private var showArt: Boolean = false
-
+    private var stalls = ArrayList<DummyStalls.Stall>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +34,8 @@ class MarketMapsActivity : AppCompatActivity(), OnMapReadyCallback {
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
+
+        stalls.addAll(DummyStalls.STALLS)
 
     }
 
@@ -109,21 +113,41 @@ class MarketMapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         with(mMap){
             if(showArt or showAll){
-                addMarker(MarkerOptions().position(LatLng(51.108962, 17.033640)).title("Stoisko 103"))
-                addMarker(MarkerOptions().position(LatLng(51.109997, 17.03330)).title("Stoisko 29")  )
+//                addMarker(MarkerOptions().position(LatLng(51.108962, 17.033640)).title("Stoisko 103"))
+//                addMarker(MarkerOptions().position(LatLng(51.109997, 17.03330)).title("Stoisko 29")  )
+                val filteredStalls = stalls.filter { it.tags.contains("rękawiczki") ||  it.tags.contains("lampki")}
+                filteredStalls.forEach{
+                    Log.i("Stalls", it.toString())
+                    addMarker(MarkerOptions().position(LatLng(it.lat, it.lng)).title("Stoisko ${it.number}"))
+                }
             }
             if (showFood or showAll){
-                addMarker(MarkerOptions().position(LatLng(51.108518, 17.032859)).title("Stoisko 121"))
-                addMarker(MarkerOptions().position(LatLng(51.110317, 17.033450)).title("Stoisko 129")  )
+//                addMarker(MarkerOptions().position(LatLng(51.108518, 17.032859)).title("Stoisko 121"))
+//                addMarker(MarkerOptions().position(LatLng(51.110317, 17.033450)).title("Stoisko 129")  )
+                val filteredStalls = stalls.filter { it.tags.contains("sery") ||  it.tags.contains("pierniki") ||  it.tags.contains("pierogi") || it.tags.contains("wino")}
+                filteredStalls.forEach{
+                    Log.i("Stalls", it.toString())
+                    addMarker(MarkerOptions().position(LatLng(it.lat, it.lng)).title("Stoisko ${it.number}"))
+                }
             }
             if (showBeauty or showAll){
-                addMarker(MarkerOptions().position(LatLng(51.109235, 17.032358)).title("Stoisko 124"))
-                addMarker(MarkerOptions().position(LatLng(51.109235, 17.032937)).title("Stoisko 105")  )
+//                addMarker(MarkerOptions().position(LatLng(51.109235, 17.032358)).title("Stoisko 124"))
+//                addMarker(MarkerOptions().position(LatLng(51.109235, 17.032937)).title("Stoisko 105")  )
+                val filteredStalls = stalls.filter { it.tags.contains("czapki") ||  it.tags.contains("rękawiczki")}
+                filteredStalls.forEach{
+                    Log.i("Stalls", it.toString())
+                    addMarker(MarkerOptions().position(LatLng(it.lat, it.lng)).title("Stoisko ${it.number}"))
+                }
             }
             if(showXmas or showAll){
-                addMarker(MarkerOptions().position(LatLng(51.109422, 17.031519)).title("Stoisko 124"))
-                addMarker(MarkerOptions().position(LatLng( 51.109563, 17.030724)).title("Stoisko 105")  )
-                addMarker(MarkerOptions().position(LatLng(  51.109563, 17.030724)).title("Stoisko 124"))
+//                addMarker(MarkerOptions().position(LatLng(51.109422, 17.031519)).title("Stoisko 124"))
+//                addMarker(MarkerOptions().position(LatLng( 51.109563, 17.030724)).title("Stoisko 105")  )
+//                addMarker(MarkerOptions().position(LatLng(  51.109563, 17.030724)).title("Stoisko 124"))
+                val filteredStalls = stalls.filter { it.tags.contains("rękawiczki") ||  it.tags.contains("lampki") || it.tags.contains("czapki")}
+                filteredStalls.forEach{
+                    Log.i("Stalls", it.toString())
+                    addMarker(MarkerOptions().position(LatLng(it.lat, it.lng)).title("Stoisko ${it.number}"))
+                }
             }
         }
         setUpMap()

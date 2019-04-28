@@ -5,9 +5,11 @@ import android.os.Bundle
 import android.support.v4.view.ViewPager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.widget.TextView
 import com.zpi.xmas2019.adapter.GalleryImageAdapter
 import com.zpi.xmas2019.adapter.GalleryRecycleViewAdapter
+import com.zpi.xmas2019.dummy.DummyStalls
 import com.zpi.xmas2019.model.Event
 
 class GalleryActivity : AppCompatActivity() {
@@ -57,6 +59,8 @@ class GalleryActivity : AppCompatActivity() {
             }
 
         })
+
+
 
     }
 
