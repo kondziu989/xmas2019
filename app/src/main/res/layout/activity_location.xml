@@ -9,7 +9,7 @@
             style="@style/background">
 
     <android.support.constraint.ConstraintLayout
-            xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent"
+            android:layout_width="match_parent"
             android:layout_height="match_parent" android:id="@+id/scrollView2" app:layout_constraintEnd_toEndOf="parent"
             tools:layout_editor_absoluteY="0dp" app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintHorizontal_bias="1.0">
@@ -22,8 +22,8 @@
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="16dp" app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginEnd="8dp"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintTop_toBottomOf="@+id/textView22" android:layout_marginTop="8dp"/>
+                app:layout_constraintHorizontal_bias="1.0"
+                android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/textView22"/>
         <TextView
                 android:text='OD RYNKU DO "PRZEJŚCIA PODZIEMNEGO'
                 android:layout_width="0dp"
@@ -40,7 +40,7 @@
                 android:layout_height="9dp"
                 android:background="?android:attr/listDivider"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginEnd="16dp"
+                android:layout_marginEnd="32dp"
                 app:layout_constraintTop_toBottomOf="@+id/textView21"
                 app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="32dp"
                 app:layout_constraintHorizontal_bias="1.0" android:layout_marginTop="16dp"
@@ -51,7 +51,7 @@
                 android:layout_height="9dp"
                 android:background="?android:attr/listDivider"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginEnd="16dp"
+                android:layout_marginEnd="32dp"
                 app:layout_constraintTop_toBottomOf="@+id/textView24"
                 app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="32dp"
                 app:layout_constraintHorizontal_bias="1.0"
@@ -59,14 +59,12 @@
         <View
                 android:id="@+id/divider7"
                 android:layout_width="0dp"
-                android:layout_height="9dp"
+                android:layout_height="10dp"
                 android:background="?android:attr/listDivider"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginEnd="16dp"
-                app:layout_constraintTop_toBottomOf="@+id/textView18"
-                app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="32dp"
-                app:layout_constraintHorizontal_bias="0.0" android:layout_marginTop="8dp"
-        />
+                android:layout_marginTop="16dp"
+                app:layout_constraintTop_toBottomOf="@+id/drive_link" app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="32dp" app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="32dp"/>
         <TextView
                 android:text=" Rynek"
                 android:layout_width="167dp"
@@ -100,16 +98,16 @@
                 android:layout_marginTop="16dp"/>
         <TextView
                 android:text="@string/drive_link"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="248dp"
+                android:layout_height="42dp"
                 android:id="@+id/drive_link"
                 android:textAppearance="@android:style/TextAppearance.Material.Headline"
                 android:layout_marginStart="16dp"
-                app:layout_constraintStart_toStartOf="parent" android:layout_marginEnd="8dp"
-                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent" android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginTop="16dp" app:layout_constraintTop_toBottomOf="@+id/map3"
-                style="@style/background"
-        />
+                style="@style/buttonWhite"
+                android:textAlignment="center"/>
         <fragment
                 android:layout_width="0dp"
                 android:layout_height="276dp"
@@ -122,13 +120,13 @@
                 android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintVertical_bias="0.0"/>
         <!--<TextView-->
-                <!--android:text="Parkingi"-->
-                <!--android:layout_width="0dp"-->
-                <!--android:layout_height="42dp"-->
-                <!--app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"-->
-                <!--android:id="@+id/textView18"-->
-                <!--android:textAppearance="@android:style/TextAppearance.Material.Headline" android:layout_marginTop="8dp"-->
-                <!--app:layout_constraintTop_toBottomOf="@+id/drive_link"/>-->
+        <!--android:text="Parkingi"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="42dp"-->
+        <!--app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"-->
+        <!--android:id="@+id/textView18"-->
+        <!--android:textAppearance="@android:style/TextAppearance.Material.Headline" android:layout_marginTop="8dp"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/drive_link"/>-->
     </android.support.constraint.ConstraintLayout>
 
 </ScrollView>
