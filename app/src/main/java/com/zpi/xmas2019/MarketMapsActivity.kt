@@ -23,6 +23,7 @@ class MarketMapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private var showBeauty: Boolean = false
     private var showXmas: Boolean = false
     private var showArt: Boolean = false
+    private var currentMarkers: ArrayList<Marker> = ArrayList()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,7 +42,7 @@ class MarketMapsActivity : AppCompatActivity(), OnMapReadyCallback {
         return true
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean{
-        mMap.clear()
+        removeAllMarkers()
         item.setChecked(!item.isChecked())
         when(item.getItemId()) {
             R.id.show_all -> {
@@ -55,43 +56,34 @@ class MarketMapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 }else {
                     showAll = false
                 }
-                dummyFilter()
-                return true
             }
             R.id.show_food -> {
-                System.out.println("food chosen")
                 if (item.isChecked()){
                     showFood = true
                     showAll = false
                   }else{ showFood = false}
-                dummyFilter()
-                return true
             }
             R.id.show_art -> {
                 if (item.isChecked()){
                 showArt = true
                 showAll = false
                 } else {showArt = false}
-                dummyFilter()
-                return true
             }
             R.id.show_beauty -> {
                 if (item.isChecked()){
                 showBeauty = true
                 showAll = false
                   } else { showBeauty = false}
-                dummyFilter()
             }
             R.id.show_xmas -> {
                 if (item.isChecked()){
                 showXmas = true
                 showAll = false
                 } else{ showXmas = false}
-                dummyFilter()
-                return true
             }
 
         }
+        dummyFilter()
         return true
     }
 
@@ -107,29 +99,44 @@ class MarketMapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     fun dummyFilter(){
 
-        with(mMap){
             if(showArt or showAll){
-                addMarker(MarkerOptions().position(LatLng(51.108962, 17.033640)).title("Stoisko 103"))
-                addMarker(MarkerOptions().position(LatLng(51.109997, 17.03330)).title("Stoisko 29")  )
+                currentMarkers.add(mMap.addMarker(MarkerOptions().position(LatLng(51.108962, 17.033640)).title("Stoisko 103")))
+                currentMarkers.add(mMap.addMarker(MarkerOptions().position(LatLng(51.109997, 17.03330)).title("Stoisko 29")  ))
             }
             if (showFood or showAll){
-                addMarker(MarkerOptions().position(LatLng(51.108518, 17.032859)).title("Stoisko 121"))
-                addMarker(MarkerOptions().position(LatLng(51.110317, 17.033450)).title("Stoisko 129")  )
+                currentMarkers.add(mMap.addMarker(MarkerOptions().position(LatLng(51.108518, 17.032859)).title("Stoisko 121")) )
+                currentMarkers.add(mMap.addMarker(MarkerOptions().position(LatLng(51.110317, 17.033450)).title("Stoisko 129")  ))
             }
             if (showBeauty or showAll){
-                addMarker(MarkerOptions().position(LatLng(51.109235, 17.032358)).title("Stoisko 124"))
-                addMarker(MarkerOptions().position(LatLng(51.109235, 17.032937)).title("Stoisko 105")  )
+                currentMarkers.add(mMap.addMarker(MarkerOptions().position(LatLng(51.109235, 17.032358)).title("Stoisko 124")))
+                currentMarkers.add(mMap.addMarker(MarkerOptions().position(LatLng(51.109235, 17.032937)).title("Stoisko 105")  ))
             }
             if(showXmas or showAll){
-                addMarker(MarkerOptions().position(LatLng(51.109422, 17.031519)).title("Stoisko 124"))
-                addMarker(MarkerOptions().position(LatLng( 51.109563, 17.030724)).title("Stoisko 105")  )
-                addMarker(MarkerOptions().position(LatLng(  51.109563, 17.030724)).title("Stoisko 124"))
+                currentMarkers.add(mMap.addMarker(MarkerOptions().position(LatLng(51.109422, 17.031519)).title("Stoisko 124")))
+                currentMarkers.add(mMap.addMarker(MarkerOptions().position(LatLng( 51.109563, 17.030724)).title("Stoisko 105")  ))
+                currentMarkers.add(mMap.addMarker(MarkerOptions().position(LatLng(  51.109563, 17.030724)).title("Stoisko 124")))
+            }
+
+       // setUpMap()
+    }
+    fun removeAllMarkers(){
+        for (currentMarker in currentMarkers) {
+            if(currentMarker!=null){
+                currentMarker.remove()
             }
         }
-        setUpMap()
+        currentMarkers.clear()
     }
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
+       /* val area_bounds: LatLngBounds= LatLngBounds(LatLng(51.107337, 17.027925), LatLng(51.112358, 17.036697))
+        mMap.addGroundOverlay(GroundOverlayOptions().apply {
+            image(BitmapDescriptorFactory.fromResource(R.drawable.mapa2222))
+            positionFromBounds(area_bounds)
+            //transparency(0.5f)
+            clickable(true)
+        })*/
+        setUpMap()
         dummyFilter()
 
     }
@@ -142,7 +149,6 @@ class MarketMapsActivity : AppCompatActivity(), OnMapReadyCallback {
             image(BitmapDescriptorFactory.fromResource(R.drawable.mapa2222))
             positionFromBounds(area_bounds)
             //transparency(0.5f)
-
             clickable(true)
         })
             setLatLngBoundsForCameraTarget(LatLngBounds(LatLng(51.1078, 17.028),LatLng(51.112, 17.0355)))
