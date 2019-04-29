@@ -44,9 +44,10 @@ class Events_ActivityItem : AppCompatActivity() {
         //toast(chosenEvent.toString())
         val button = findViewById<AppCompatImageButton>(R.id.ID_galleryFloatingButton)
         button.setOnClickListener {
-            //intent.putExtra("ChosenEventFromEvent",cho)//change chosen date to 0,0,0
-            //startActivity(intent)
-            toast("Go to gallery")
+            val intent = Intent(this@Events_ActivityItem, GalleryActivity::class.java)
+            intent.putExtra("ChosenEventFromEvent",chosenEvent)//change chosen date to 0,0,0
+            startActivity(intent)
+            //toast("Go to gallery")
         }
 
 

@@ -5,9 +5,12 @@ import android.os.Bundle
 import android.support.v4.view.ViewPager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.widget.TextView
 import com.zpi.xmas2019.adapter.GalleryImageAdapter
 import com.zpi.xmas2019.adapter.GalleryRecycleViewAdapter
+import com.zpi.xmas2019.dummy.DummyStalls
+import com.zpi.xmas2019.model.Event
 
 class GalleryActivity : AppCompatActivity() {
 
@@ -18,10 +21,15 @@ class GalleryActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_gallery)
 
-        for (i in 53 until 75){
-            images.add("http://www.jarmarkbozonarodzeniowy.com/images/galeria/19$i.jpg")
+        if(intent.hasExtra("ChosenEventFromEvent")){
+            val chosenEvent : Event = intent.getSerializableExtra("ChosenEventFromEvent") as Event
+            images.addAll(chosenEvent.imgUrls)
         }
-
+        else{
+            for (i in 53 until 75){
+                images.add("http://www.jarmarkbozonarodzeniowy.com/images/galeria/19$i.jpg")
+            }
+        }
         imgStats = findViewById(R.id.imgStats2)
         val text = "1/${images.size}"
         imgStats.text = text
@@ -30,7 +38,6 @@ class GalleryActivity : AppCompatActivity() {
         val viewPagerAdapter = GalleryImageAdapter(this, images)
 
         viewPager.adapter = viewPagerAdapter
-
 
         val layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         val recyclerView = findViewById<RecyclerView>(R.id.gallery_recycle_view)
@@ -52,6 +59,8 @@ class GalleryActivity : AppCompatActivity() {
             }
 
         })
+
+
 
     }
 
