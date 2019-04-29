@@ -129,6 +129,7 @@ class MarketMapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 filteredStalls.forEach{
                     Log.i("Stalls", it.toString())
                     addMarker(MarkerOptions().position(LatLng(it.lat, it.lng)).title("Stoisko ${it.number}"))
+
                 }
             }
             if (showBeauty or showAll){
@@ -176,6 +177,22 @@ class MarketMapsActivity : AppCompatActivity(), OnMapReadyCallback {
             uiSettings.setAllGesturesEnabled(true)
             uiSettings.setMapToolbarEnabled(false)
         }
+            mMap.setOnMarkerClickListener(object : GoogleMap.OnMarkerClickListener {
+                override fun onMarkerClick(marker: Marker): Boolean {
+                    var title = marker.title
+                    val regex = "Stoisko ([0-9]+)".toRegex()
+                    regex.matchEntire(title)
+                        ?.destructured
+                        ?. let {
+                            (number) ->
+                            val foundStall = stalls.find {
+                                it.number == number.toInt()
+                            }
+                            Log.i("Marker", foundStall.toString())
+                        }
+                    return false
+                }
+            })
     }
     override fun onResume(){
         super.onResume()
