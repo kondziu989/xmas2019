@@ -42,6 +42,7 @@ class MarketMapsActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val inflater: MenuInflater = menuInflater
         inflater.inflate(R.menu.maps_filter_menu, menu)
+
         return true
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean{
@@ -173,6 +174,7 @@ class MarketMapsActivity : AppCompatActivity(), OnMapReadyCallback {
             setMinZoomPreference(17f)
             isMyLocationEnabled = true
             uiSettings.setAllGesturesEnabled(true)
+            uiSettings.setMapToolbarEnabled(false)
         }
     }
     override fun onResume(){
