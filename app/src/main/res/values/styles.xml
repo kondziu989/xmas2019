@@ -25,21 +25,21 @@
     <style name="background">
         <item name="android:background">@drawable/gradient_selector</item>
     </style>
+    <style name="background_calendar">
+        <item name="android:background">@drawable/gradient_selector_calendar</item>
+    </style>
 
 
     <!-- Calendar view -->
     <style name="CalenderViewCustom" parent="Theme.AppCompat">
-        <item name="android:focusedMonthDateColor">@color/colorOfMainHeader</item>
-        <item name="android:colorBackground">@color/colorOfMainHeader</item>
-        <item name="colorAccent">@color/colorOfMainHeader</item>
+        <item name="android:focusedMonthDateColor">@color/selectedText</item>
+        <item name="android:colorBackground">@color/selectedText</item>
+        <item name="colorAccent">@color/selectedText</item>
 
     </style>
 
     <style name="CalenderViewDateCustomText">
-        <item name="android:focusedMonthDateColor">@color/colorOfMainHeader</item>
-        <item name="android:colorBackground">@color/colorOfMainHeader</item>
-        <item name="colorAccent">@color/colorOfMainHeader</item>
-        <item name="colorPrimary">@color/colorOfMainHeader</item>
+        <item name="colorPrimary">@color/CalendarWeeksColor</item>
         <item name="android:textColor">@color/CalendarDaysColor</item>
 
     </style>
@@ -51,7 +51,7 @@
     <!-- Calendar view -->
 
     <!-- Calendar popup -->
-    <style name="AppTheme.PopupTheme" >
+    <style name="AppTheme.PopupTheme">
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowCloseOnTouchOutside">true</item>
         <item name="android:layout_gravity">top</item>

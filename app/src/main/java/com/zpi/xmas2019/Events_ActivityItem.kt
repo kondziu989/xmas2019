@@ -5,7 +5,9 @@ import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.support.annotation.RequiresApi
+import android.support.design.widget.FloatingActionButton
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.AppCompatImageButton
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.Menu
@@ -35,15 +37,17 @@ class Events_ActivityItem : AppCompatActivity() {
         val eventDescription = findViewById<TextView>(R.id.ID_chosen_eventDescription)
 
         eventName.text = chosenEvent.name
-        eventImage.setImageDrawable(resources.getDrawable(R.drawable.jarmark1))
-        eventDescription.text = "Pokazy \"Pomocników Szalonego Mikołaja\"\n" +
-                "Realizowane w Movie Gate - Galeria Sztuki Filmowej zlokalizowana w podziemnym schronie na Placu Solnym dla osób indywidualnych i grup zorganizowanych\n" +
-                "poniedziałek - czwartek: godz. 11:00, 13:00, 15:00, 17:00\n" +
-                "piątek - niedziela: godz. 11:00, 13:00, 15:00, 17:00, 19:00\n" +
-                "rezerwacje, cennik i więcej informacji na www.moviegate.pl"
-
+        val resId = resources.getIdentifier(chosenEvent.image, "drawable","com.zpi.xmas2019")
+        eventImage.setImageResource(resId)
+        eventDescription.text = chosenEvent.description
+       
         //toast(chosenEvent.toString())
-
+        val button = findViewById<AppCompatImageButton>(R.id.ID_galleryFloatingButton)
+        button.setOnClickListener {
+            //intent.putExtra("ChosenEventFromEvent",cho)//change chosen date to 0,0,0
+            //startActivity(intent)
+            toast("Go to gallery")
+        }
 
 
     }

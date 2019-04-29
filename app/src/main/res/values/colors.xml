@@ -9,18 +9,23 @@
     <color name="yellowTransparent">#BFFFEB3B</color>
     <color name="yellow">#FFEB3B</color>
     <!--Calendar colors -->
-    <color name="CalendarWeeksColor">#FFFF</color>
-    <color name="CalendarDaysColor">#929292</color>
+    <color name="CalendarWeeksColor">#F4BD37</color>
+    <color name="CalendarDaysColor">#FFFF</color>
     <color name="colorAccentCal">#1052E8</color>
     <color name="backGroundOfCalendar">#CFD4DF</color>
     <color name="calendarColor_accent">#84A3E6</color>
 
 
-    <color name="colorOfMainHeader">#F4BD37</color>
+    <color name="selectedText">#F4BD37</color>
     <color name="colorOfEventsShowAll">#278c00</color>
 
 
     <!--dots-->
     <color name ="active_dot">#FFEB3B</color>
     <color name ="inactive_dot">#FFFFFF</color>
+
+    <color name="calendarGradientColor_1">#00DF2D</color>
+    <color name="calendarGradientColor_2">#028C1E</color>
+
+    <color name="galleryFloatingButton">#FF3131</color>
 </resources>

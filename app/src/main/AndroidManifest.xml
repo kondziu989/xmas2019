@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           xmlns:tools="http://schemas.android.com/tools"
           package="com.zpi.xmas2019">
+          xmlns:tools="http://schemas.android.com/tools"
+          package="com.zpi.xmas2019">
+
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -21,6 +24,8 @@
             tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".TestActivity">
         </activity>
+            android:theme="@style/AppTheme"
+            tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".GalleryActivity">
         </activity>
         <!--

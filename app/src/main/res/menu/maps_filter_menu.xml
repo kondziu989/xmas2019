@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/show_all"
+          android:title="Wszystko"
+          android:checkable="true"/>
+    <item android:id="@+id/show_xmas"
+          android:title="Artykuły świąteczne"
+          android:checkable="true"/>
+    <item android:id="@+id/show_food"
+          android:title="Jedzenie"
+          android:checkable="true"/>
+    <item android:id="@+id/show_beauty"
+          android:title="Kosmetyki"
+          android:checkable="true"/>
+    <item android:id="@+id/show_art"
+          android:title="Rękodzieło"
+          android:checkable="true"/>
+
+
+</menu>

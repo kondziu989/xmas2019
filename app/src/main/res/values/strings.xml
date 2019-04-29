@@ -20,5 +20,11 @@
     <string name="title_activity_gmaps">Map</string>
     <string name="_2019">2019</string>
     <string name="show_all_events">Pokaż wszystkie</string>
+    <string name="title_eventimages_list">EventsImages</string>
+    <string name="title_eventimages_detail">EventImages Detail</string>
+    <string name="event_description">event description</string>
+    <string name="event_name">event_name</string>
+    <string name="todo">TODO</string>
+    <string name="defaultText_moreInfo">More info wasnt found</string>
 
 </resources>
