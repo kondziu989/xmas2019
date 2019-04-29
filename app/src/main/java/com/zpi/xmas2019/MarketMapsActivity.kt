@@ -15,6 +15,8 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
 import com.zpi.xmas2019.dummy.DummyStalls
+import kotlinx.android.synthetic.main.activity_market_maps.*
+import kotlinx.android.synthetic.main.activity_test.*
 
 
 class MarketMapsActivity : AppCompatActivity(), OnMapReadyCallback {
@@ -188,7 +190,11 @@ class MarketMapsActivity : AppCompatActivity(), OnMapReadyCallback {
                             val foundStall = stalls.find {
                                 it.number == number.toInt()
                             }
-                            Log.i("Marker", foundStall.toString())
+//                            stall_button.setOnClickListener {
+//                                var stallFragment = StallDetails.newInstance(foundStall!!.number, foundStall.tags as ArrayList<String>)
+//                                var frameLayout = stall_container
+//                                supportFragmentManager.beginTransaction().replace(R.id.frameLayout, stallFragment).commit();
+//                            }
                         }
                     return false
                 }
