@@ -8,6 +8,7 @@ import kotlin.random.Random
 object DummyStalls {
 
     var STALLS = ArrayList<Stall>()
+    var TAGS = createTags()
 
     val COUNT = 100
 
@@ -36,15 +37,27 @@ object DummyStalls {
         tags.add("sery")
         tags.add("miód pitny")
         tags.add("rękawiczki")
-        tags.add("rękodzieła")
         tags.add("pierogi")
         tags.add("lampki")
+        tags.add("ozdoby choinkowe")
+        tags.add("dekoracje świateczne")
+        tags.add("zestawy prezentowe")
+        tags.add("biżuteria")
+        tags.add("wyroby z tkanin")
+        tags.add("artykuły góralskie")
+        tags.add("pamiątki z wrocławia")
+        tags.add("wypieki")
+        tags.add("słodkie przekąski")
+        tags.add("wata cukrowa")
+        tags.add("wędliny")
+        tags.add("przyprawy")
+        tags.add("ziołą")
         return tags
     }
 
     private fun getRandomTags(tags : ArrayList<String>) : List<String> {
         val stallTags = HashSet<String>()
-        val stallTagsSize = (1..4).random()
+        val stallTagsSize = (2..6).random()
         while (stallTags.size < stallTagsSize){
             stallTags.add(tags[(0 until tags.size -1).random()])
         }

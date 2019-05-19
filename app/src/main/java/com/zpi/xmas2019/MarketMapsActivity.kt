@@ -14,6 +14,9 @@ import android.support.design.widget.BottomSheetBehavior
 import android.support.design.widget.BottomSheetDialog
 import android.support.v4.widget.NestedScrollView
 import android.view.View
+import android.widget.Button
+import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.LinearLayout
 
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -23,6 +26,11 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
 import com.zpi.xmas2019.dummy.DummyStalls
 import kotlinx.android.synthetic.main.activity_market_maps.*
+import android.graphics.Bitmap
+import android.provider.MediaStore.Images.Media.getBitmap
+import android.graphics.drawable.BitmapDrawable
+
+
 
 
 class MarketMapsActivity : AppCompatActivity(), OnMapReadyCallback, StallDetails.OnFragmentInteractionListener {
@@ -37,6 +45,7 @@ class MarketMapsActivity : AppCompatActivity(), OnMapReadyCallback, StallDetails
     private var showXmas: Boolean = false
     private var showArt: Boolean = false
     private var stalls = ArrayList<DummyStalls.Stall>()
+    private var searchBarVisible = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,6 +56,8 @@ class MarketMapsActivity : AppCompatActivity(), OnMapReadyCallback, StallDetails
         mapFragment.getMapAsync(this)
 
         stalls.addAll(DummyStalls.STALLS)
+
+
 
         val sheetBehavior = BottomSheetBehavior.from<NestedScrollView>(bottom_sheet)
 
@@ -89,7 +100,13 @@ class MarketMapsActivity : AppCompatActivity(), OnMapReadyCallback, StallDetails
                 }
             }
         }
+
+        val searchStallsButton = findViewById<ImageButton>(R.id.search_tags_button)
+
+        searchStallsButton.setOnClickListener { onSearchClick() }
     }
+
+
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val inflater: MenuInflater = menuInflater
@@ -97,6 +114,14 @@ class MarketMapsActivity : AppCompatActivity(), OnMapReadyCallback, StallDetails
         return true
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean{
+        if(item.itemId == R.id.app_bar_search){
+            searchBarVisible = !searchBarVisible
+            Log.i("Visible", searchBarVisible.toString())
+            val searchTags = findViewById<LinearLayout>(R.id.search_tags)
+            if(searchBarVisible)  searchTags.visibility = View.VISIBLE
+            else searchTags.visibility = View.INVISIBLE
+            return true
+        }
         if(item.itemId != R.id.filter) {
             mMap.clear()
             item.setChecked(!item.isChecked())
@@ -172,6 +197,8 @@ class MarketMapsActivity : AppCompatActivity(), OnMapReadyCallback, StallDetails
      */
 
     fun dummyFilter(){
+        searchTags("cz")
+        searchTags("pierniki")
 
         with(mMap){
             if(showArt or showAll){
@@ -263,6 +290,39 @@ class MarketMapsActivity : AppCompatActivity(), OnMapReadyCallback, StallDetails
             })
     }
 
+    fun searchTags(tag: String) : ArrayList<String>{
+        val tags = DummyStalls.TAGS
+        val foundTags = tags.filter { it.startsWith(tag, ignoreCase = true) }
+        Log.i("Search", foundTags.toString())
+        return foundTags as ArrayList<String>
+    }
+
+    fun searchStalls(tags: ArrayList<String>) : ArrayList<DummyStalls.Stall>{
+        val foundStals = DummyStalls.STALLS.filter {
+            it.tags.map {
+                tags.contains(it)
+            }.contains(true)
+        }
+        Log.i("SearchStall", foundStals.count().toString())
+        return foundStals as ArrayList<DummyStalls.Stall>
+    }
+
+    fun onSearchClick(){
+        val searchBar = findViewById<EditText>(R.id.search_tags_text)
+        stalls = searchStalls(searchTags(searchBar.text.toString()))
+        with(mMap){
+            stalls.forEach{
+                val height = 140
+                val width = 120
+                val bitmapdraw = getDrawable(R.mipmap.ic_launcher_foreground) as BitmapDrawable
+                val b = bitmapdraw.bitmap
+                val smallMarker = Bitmap.createScaledBitmap(b, width, height, false)
+                addMarker(MarkerOptions().position(LatLng(it.lat, it.lng)).title("Stoisko ${it.number}").icon(BitmapDescriptorFactory.fromBitmap(smallMarker)))
+            }
+        }
+        setUpMap()
+    }
+
     override fun onBackPressed() {
         val sheetBehavior = BottomSheetBehavior.from<NestedScrollView>(bottom_sheet)
         if(sheetBehavior.state==BottomSheetBehavior.STATE_EXPANDED){
@@ -276,5 +336,7 @@ class MarketMapsActivity : AppCompatActivity(), OnMapReadyCallback, StallDetails
             dummyFilter()
         }
     }
+
+    //TODO merge with master
 
 }
