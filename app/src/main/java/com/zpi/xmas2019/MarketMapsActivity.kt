@@ -94,60 +94,69 @@ class MarketMapsActivity : AppCompatActivity(), OnMapReadyCallback, StallDetails
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val inflater: MenuInflater = menuInflater
         inflater.inflate(R.menu.maps_filter_menu, menu)
-
         return true
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean{
-        mMap.clear()
-        item.setChecked(!item.isChecked())
-        when(item.getItemId()) {
-            R.id.show_all -> {
+        if(item.itemId != R.id.filter) {
+            mMap.clear()
+            item.setChecked(!item.isChecked())
+            when (item.getItemId()) {
+                R.id.show_all -> {
 
-                if (item.isChecked()){
-                showAll = true
-                showFood = false
-                showBeauty = false
-                showXmas = false
-                showArt = false
-                }else {
-                    showAll = false
+                    if (item.isChecked()) {
+                        showAll = true
+                        showFood = false
+                        showBeauty = false
+                        showXmas = false
+                        showArt = false
+                    } else {
+                        showAll = false
+                    }
+                    dummyFilter()
+                    return true
                 }
-                dummyFilter()
-                return true
-            }
-            R.id.show_food -> {
-                System.out.println("food chosen")
-                if (item.isChecked()){
-                    showFood = true
-                    showAll = false
-                  }else{ showFood = false}
-                dummyFilter()
-                return true
-            }
-            R.id.show_art -> {
-                if (item.isChecked()){
-                showArt = true
-                showAll = false
-                } else {showArt = false}
-                dummyFilter()
-                return true
-            }
-            R.id.show_beauty -> {
-                if (item.isChecked()){
-                showBeauty = true
-                showAll = false
-                  } else { showBeauty = false}
-                dummyFilter()
-            }
-            R.id.show_xmas -> {
-                if (item.isChecked()){
-                showXmas = true
-                showAll = false
-                } else{ showXmas = false}
-                dummyFilter()
-                return true
-            }
+                R.id.show_food -> {
+                    System.out.println("food chosen")
+                    if (item.isChecked()) {
+                        showFood = true
+                        showAll = false
+                    } else {
+                        showFood = false
+                    }
+                    dummyFilter()
+                    return true
+                }
+                R.id.show_art -> {
+                    if (item.isChecked()) {
+                        showArt = true
+                        showAll = false
+                    } else {
+                        showArt = false
+                    }
+                    dummyFilter()
+                    return true
+                }
+                R.id.show_beauty -> {
+                    if (item.isChecked()) {
+                        showBeauty = true
+                        showAll = false
+                    } else {
+                        showBeauty = false
+                    }
+                    dummyFilter()
+                }
+                R.id.show_xmas -> {
+                    if (item.isChecked()) {
+                        showXmas = true
+                        showAll = false
+                    } else {
+                        showXmas = false
+                    }
+                    dummyFilter()
+                    return true
+                }
 
+            }
         }
         return true
     }
@@ -243,7 +252,7 @@ class MarketMapsActivity : AppCompatActivity(), OnMapReadyCallback, StallDetails
                             val foundStall = stalls.find {
                                 it.number == number.toInt()
                             }
-                            var stallFragment = StallDetails.newInstance(foundStall!!.number, foundStall.tags as ArrayList<String>)
+                            var stallFragment = StallDetails.newInstance(foundStall!!.number, ArrayList<String>(foundStall.tags))
                             var frameLayout = map
                             supportFragmentManager.beginTransaction().replace(R.id.stallinfo_frame, stallFragment).commit();
                             bottom_sheet.visibility=View.VISIBLE
@@ -252,6 +261,14 @@ class MarketMapsActivity : AppCompatActivity(), OnMapReadyCallback, StallDetails
                     return false
                 }
             })
+    }
+
+    override fun onBackPressed() {
+        val sheetBehavior = BottomSheetBehavior.from<NestedScrollView>(bottom_sheet)
+        if(sheetBehavior.state==BottomSheetBehavior.STATE_EXPANDED){
+            sheetBehavior.state=BottomSheetBehavior.STATE_COLLAPSED
+        }
+        else super.onBackPressed()
     }
     override fun onResume(){
         super.onResume()

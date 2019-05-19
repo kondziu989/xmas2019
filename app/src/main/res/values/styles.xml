@@ -10,8 +10,18 @@
         <item name="windowNoTitle">false</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:itemBackground">@color/colorPrimary</item>
-
     </style>
+
+    <style name="MyActionButtonOverflow" parent="android:style/Widget.Holo.Light.ActionButton.Overflow">
+        <item name="android:src">@drawable/filter_icon</item>
+    </style>
+
+    <style name="FilterMenu" parent="AppTheme">
+        <item name="android:actionOverflowButtonStyle">@style/MyActionButtonOverflow</item>
+    </style>
+
+
+
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
@@ -56,7 +66,6 @@
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowCloseOnTouchOutside">true</item>
         <item name="android:layout_gravity">top</item>
-
     </style>
 
 
