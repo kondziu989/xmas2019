@@ -38,7 +38,7 @@ class GalleryImageAdapter(private val activity : Activity, private val images : 
         try {
             Picasso.get()
                 .load(images[position])
-                .placeholder(R.mipmap.ic_launcher)
+                .placeholder(R.drawable.icon)
                 .error(R.mipmap.ic_launcher_round)
                 .into(imageView)
         }

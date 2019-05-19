@@ -68,7 +68,6 @@ class StallDetails : Fragment() {
         val viewPager = viewOfLayout.stallViewPager
         val viewPagerAdapter = StallImageAdapter(activity as Activity, images)
         viewPager.adapter = viewPagerAdapter
-
         viewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
 
             override fun onPageScrollStateChanged(state: Int) {
