@@ -1,13 +1,20 @@
 
 package com.zpi.xmas2019
 
+import android.net.Uri
+import android.opengl.Visibility
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
-import android.widget.CheckBox
+
+import android.support.design.widget.BottomSheetBehavior
+import android.support.design.widget.BottomSheetDialog
+import android.support.v4.widget.NestedScrollView
+import android.view.View
+import android.widget.LinearLayout
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -16,10 +23,12 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
 import com.zpi.xmas2019.dummy.DummyStalls
 import kotlinx.android.synthetic.main.activity_market_maps.*
-import kotlinx.android.synthetic.main.activity_test.*
 
 
-class MarketMapsActivity : AppCompatActivity(), OnMapReadyCallback {
+class MarketMapsActivity : AppCompatActivity(), OnMapReadyCallback, StallDetails.OnFragmentInteractionListener {
+    override fun onFragmentInteraction(uri: Uri) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 
     private lateinit var mMap: GoogleMap
     private var showAll: Boolean = false
@@ -39,6 +48,47 @@ class MarketMapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         stalls.addAll(DummyStalls.STALLS)
 
+        val sheetBehavior = BottomSheetBehavior.from<NestedScrollView>(bottom_sheet)
+
+        bottom_sheet.visibility=View.INVISIBLE
+
+        /**
+         * bottom sheet state change listener
+         * we are changing button text when sheet changed state
+         * */
+        sheetBehavior.setBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback() {
+            override fun onStateChanged(bottomSheet: View, newState: Int) {
+                when (newState) {
+                    BottomSheetBehavior.STATE_HIDDEN -> {
+                    }
+                    BottomSheetBehavior.STATE_EXPANDED ->{
+                        swipe_button.rotation = 0.toFloat()
+                    }
+                    BottomSheetBehavior.STATE_COLLAPSED ->{
+                        swipe_button.rotation = 180.toFloat()
+                    }
+                    BottomSheetBehavior.STATE_DRAGGING -> {
+                    }
+                    BottomSheetBehavior.STATE_SETTLING -> {
+                    }
+                }
+            }
+
+            override fun onSlide(bottomSheet: View, slideOffset: Float) {
+            }
+        })
+
+        swipe_button.setOnClickListener {
+            when(sheetBehavior.state){
+                BottomSheetBehavior.STATE_COLLAPSED ->{
+                    sheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
+                }
+
+                BottomSheetBehavior.STATE_EXPANDED ->{
+                    sheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+                }
+            }
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -179,6 +229,9 @@ class MarketMapsActivity : AppCompatActivity(), OnMapReadyCallback {
             uiSettings.setAllGesturesEnabled(true)
             uiSettings.setMapToolbarEnabled(false)
         }
+            mMap.setOnMapClickListener {
+                bottom_sheet.visibility=View.INVISIBLE
+            }
             mMap.setOnMarkerClickListener(object : GoogleMap.OnMarkerClickListener {
                 override fun onMarkerClick(marker: Marker): Boolean {
                     var title = marker.title
@@ -190,11 +243,11 @@ class MarketMapsActivity : AppCompatActivity(), OnMapReadyCallback {
                             val foundStall = stalls.find {
                                 it.number == number.toInt()
                             }
-//                            stall_button.setOnClickListener {
-//                                var stallFragment = StallDetails.newInstance(foundStall!!.number, foundStall.tags as ArrayList<String>)
-//                                var frameLayout = stall_container
-//                                supportFragmentManager.beginTransaction().replace(R.id.frameLayout, stallFragment).commit();
-//                            }
+                            var stallFragment = StallDetails.newInstance(foundStall!!.number, foundStall.tags as ArrayList<String>)
+                            var frameLayout = map
+                            supportFragmentManager.beginTransaction().replace(R.id.stallinfo_frame, stallFragment).commit();
+                            bottom_sheet.visibility=View.VISIBLE
+
                         }
                     return false
                 }
