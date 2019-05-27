@@ -30,9 +30,9 @@ class MainActivity : AppCompatActivity(){
         location_link.setOnClickListener {
             startActivity(Intent(this, LocationActivity::class.java))
         }
-        media_link.setOnClickListener{
+        /*media_link.setOnClickListener{
             startActivity(Intent(this, GalleryActivity::class.java))
-        }
+        }*/
     }
 }
 
