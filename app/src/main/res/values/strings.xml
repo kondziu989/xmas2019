@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">xmas2019</string>
+    <string name="app_name">Jarmark Wrocław</string>
     <string name="host_name">Organizator Jarmarku \n PIANOFORTE Agancja Artystyczna</string>
 
     <string name="drive_link">Sprawdź dojazdy</string>
@@ -12,13 +12,19 @@
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
     <string name="tab_text_3">Tab 3</string>
-  
+
     <string name="save_button">Save</string>
     <string name="cancel_button">Cancel</string>
-  
-  
+
+
     <string name="title_activity_gmaps">Map</string>
     <string name="_2019">2019</string>
     <string name="show_all_events">Pokaż wszystkie</string>
+    <string name="title_eventimages_list">EventsImages</string>
+    <string name="title_eventimages_detail">EventImages Detail</string>
+    <string name="event_description">event description</string>
+    <string name="event_name">event_name</string>
+    <string name="todo">TODO</string>
+    <string name="defaultText_moreInfo">More info wasnt found</string>
 
 </resources>

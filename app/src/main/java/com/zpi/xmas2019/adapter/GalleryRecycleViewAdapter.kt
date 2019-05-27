@@ -23,7 +23,7 @@ class GalleryRecycleViewAdapter(val images : List<String>,val textView: TextView
         try {
             Picasso.get()
                 .load(image_url)
-                .placeholder(R.mipmap.ic_launcher)
+                .placeholder(R.drawable.icon)
                 .error(R.mipmap.ic_launcher_round)
                 .into(holder.mainImage)
         } catch (e : Exception){

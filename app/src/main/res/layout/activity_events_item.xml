@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<android.support.design.widget.CoordinatorLayout
+<android.support.constraint.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
-         xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
-         android:layout_width="match_parent"
-         android:layout_height="match_parent"
-         style="@style/background"
-         android:fitsSystemWindows="true">
+        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        style="@style/background"
+        android:fitsSystemWindows="true" android:id="@+id/constraintLayout2">
 
     <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_anchorGravity="top|center"
-            android:id="@+id/scrollView3">
+            android:id="@+id/scrollView3" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+    >
         <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -26,12 +28,12 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"/>
+                    app:layout_constraintHorizontal_bias="0.0" android:contentDescription="@string/todo"/>
             <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:id="@+id/ID_chosen_eventName"
-                    android:text="event_name"
+                    android:text="@string/event_name"
                     android:textStyle="bold|italic"
                     android:textAlignment="center"
                     android:textColor="@color/selectedText"
@@ -49,21 +51,23 @@
                     android:layout_alignParentEnd="true"
                     android:layout_width="0dp"
                     android:textSize="18sp"
-                    android:layout_marginStart="30dp"
-                    android:text="event description"
-                    app:layout_constraintStart_toStartOf="parent" android:layout_marginEnd="30dp"
+                    android:layout_marginStart="15dp"
+                    android:text="@string/event_description"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginEnd="15dp"
                     app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="20dp"
                     app:layout_constraintTop_toBottomOf="@+id/ID_chosen_eventName"
-                    app:layout_constraintHorizontal_bias="0.497"/>
+                    app:layout_constraintHorizontal_bias="0.497" app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginBottom="15dp"/>
         </android.support.constraint.ConstraintLayout>
     </ScrollView>
-    <android.support.design.widget.FloatingActionButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+    <android.support.v7.widget.AppCompatImageButton
+            android:layout_width="71dp"
+            android:layout_height="83dp"
             android:id="@+id/ID_galleryFloatingButton"
-            android:src="@mipmap/but"
-            app:backgroundTint="@color/selectedText"
             android:layout_gravity="end|bottom"
             android:layout_margin="40dp"
-    />
-</android.support.design.widget.CoordinatorLayout>
+            android:src="@drawable/floating_button_img2"
+            app:backgroundTint="@android:color/transparent"
+            android:layout_marginEnd="4dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="232dp"
+            app:layout_constraintTop_toTopOf="parent"/>
+</android.support.constraint.ConstraintLayout>

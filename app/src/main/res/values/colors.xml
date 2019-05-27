@@ -6,7 +6,8 @@
     <color name="colorAccent">#74D680</color>
     <color name="white">#FFFFFF</color>
     <color name="colorPrimaryLight">#FF7878</color>
-
+    <color name="yellowTransparent">#BFFFEB3B</color>
+    <color name="yellow">#FFEB3B</color>
     <!--Calendar colors -->
     <color name="CalendarWeeksColor">#F4BD37</color>
     <color name="CalendarDaysColor">#FFFF</color>
@@ -17,4 +18,14 @@
 
     <color name="selectedText">#F4BD37</color>
     <color name="colorOfEventsShowAll">#278c00</color>
+
+
+    <!--dots-->
+    <color name ="active_dot">#FFEB3B</color>
+    <color name ="inactive_dot">#FFFFFF</color>
+
+    <color name="calendarGradientColor_1">#00DF2D</color>
+    <color name="calendarGradientColor_2">#028C1E</color>
+
+    <color name="galleryFloatingButton">#FF3131</color>
 </resources>

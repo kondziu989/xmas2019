@@ -12,12 +12,12 @@ import com.squareup.picasso.Picasso
 import com.zpi.xmas2019.R
 import java.lang.Exception
 
-class GalleryImageAdapter(private val activity : Activity, private val images : MutableList<String>) : PagerAdapter() {
+class StallImageAdapter(private val activity : Activity, private val images : MutableList<String>) : PagerAdapter() {
 
-    var layoutInflater : LayoutInflater? = null
+    var layoutInflater: LayoutInflater? = null
 
     override fun isViewFromObject(view: View, `object`: Any): Boolean {
-       return view == `object`
+        return view == `object`
     }
 
     override fun getCount(): Int {
@@ -26,24 +26,24 @@ class GalleryImageAdapter(private val activity : Activity, private val images : 
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         layoutInflater = activity.applicationContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        val itemView : View = layoutInflater!!.inflate(R.layout.gallery_view_pager_item, container, false)
+        val itemView: View = layoutInflater!!.inflate(R.layout.gallery_view_pager_item, container, false)
 
-        val imageView : ImageView = itemView.findViewById(R.id.galleryImageViewItem)
+        val imageView: ImageView = itemView.findViewById(R.id.galleryImageViewItem)
 
         val dis = DisplayMetrics()
         activity.windowManager.defaultDisplay.getMetrics(dis)
+
         imageView.minimumHeight = dis.heightPixels
         imageView.minimumWidth = dis.widthPixels
 
-        try {
-            Picasso.get()
-                .load(images[position])
-                .placeholder(R.drawable.icon)
-                .error(R.mipmap.ic_launcher_round)
-                .into(imageView)
-        }
-        catch (e : Exception){
 
+        when (position) {
+            0 -> imageView.setImageResource(R.drawable.stall1)
+            1 -> imageView.setImageResource(R.drawable.stall2)
+            2 -> imageView.setImageResource(R.drawable.stall3)
+            else -> {
+                imageView.setImageResource(R.drawable.stall1)
+            }
         }
         container.addView(itemView)
         return itemView
@@ -52,5 +52,5 @@ class GalleryImageAdapter(private val activity : Activity, private val images : 
     override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
         container.removeView(`object` as View)
     }
-
 }
+
