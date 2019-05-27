@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.util.DisplayMetrics
+import android.view.KeyEvent
 import android.view.View
 import android.widget.Button
 import android.widget.CalendarView
@@ -50,8 +51,14 @@ class Events_ActivityCalendar : Activity() {
             startActivity(intent)
             //finish()
         }
-
-
-
     }
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            val intent = Intent(this@Events_ActivityCalendar, EventsActivity::class.java)
+            startActivity(intent)
+            return true
+        }
+        return super.onKeyDown(keyCode, event)
+    }
+
 }

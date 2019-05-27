@@ -102,7 +102,14 @@ class EventsActivity : AppCompatActivity()  {
 
     }
 
-
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            val intent = Intent(this@EventsActivity, MainActivity::class.java)
+            startActivity(intent)
+            return true
+        }
+        return super.onKeyDown(keyCode, event)
+    }
 
     //Toast for context
     fun Context.toast(message: CharSequence) =
