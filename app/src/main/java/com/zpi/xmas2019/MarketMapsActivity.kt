@@ -28,8 +28,11 @@ import com.google.android.gms.maps.model.*
 import com.zpi.xmas2019.dummy.DummyStalls
 import kotlinx.android.synthetic.main.activity_market_maps.*
 import android.graphics.Bitmap
+import android.graphics.Canvas
 import android.provider.MediaStore.Images.Media.getBitmap
 import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.Drawable
+import android.support.v4.content.ContextCompat
 import android.view.inputmethod.InputMethodManager
 
 
@@ -220,17 +223,25 @@ class MarketMapsActivity : AppCompatActivity(), OnMapReadyCallback, StallDetails
         dummyFilter()
 
     }
+    fun bitmapDescriptorFromVector( vectorResId: Int) :BitmapDescriptor{
+        val  vectorDrawable :Drawable = getDrawable(vectorResId)
+        vectorDrawable.setBounds(0, 0, vectorDrawable.getIntrinsicWidth(), vectorDrawable.getIntrinsicHeight());
+        val bitmap :Bitmap  = Bitmap.createBitmap(vectorDrawable.getIntrinsicWidth(), vectorDrawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888)
+         val canvas = Canvas(bitmap)
+        vectorDrawable.draw(canvas)
+        return BitmapDescriptorFactory.fromBitmap(bitmap)
+}
     fun setUpMap(){
         val cameraPosition = LatLng(51.1099955, 17.0323775)
         val areaBounds = LatLngBounds(LatLng(51.107022, 17.027541), LatLng(51.112969, 17.037214))
         with(mMap){
             moveCamera(CameraUpdateFactory.newLatLng(cameraPosition))
             addGroundOverlay(GroundOverlayOptions().apply {
-            image(BitmapDescriptorFactory.fromResource(R.drawable.ic_framedmap))
+            image(bitmapDescriptorFromVector(R.drawable.ic_framedmap))
             positionFromBounds(areaBounds)
             clickable(true)
         })
-            setLatLngBoundsForCameraTarget(LatLngBounds(LatLng(51.1088, 17.0296),LatLng(51.111, 17.035)))
+            setLatLngBoundsForCameraTarget(LatLngBounds(LatLng(51.1093, 17.0298),LatLng(51.1107, 17.035)))
             setMinZoomPreference(17f)
             isMyLocationEnabled = true
             uiSettings.setAllGesturesEnabled(true)
