@@ -22,26 +22,40 @@
     <!--</FrameLayout>-->
 
 </fragment>
-    <LinearLayout android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:orientation="horizontal"
-                  android:gravity="center"
-                  android:id="@+id/search_tags"
-                  android:layout_marginTop="40dp" android:visibility="invisible">
-        <FrameLayout android:layout_width="wrap_content" android:layout_height="match_parent">
-            <EditText android:layout_width="250dp"
-                      android:layout_height="match_parent"
-                      android:background="@drawable/rounded_corners_shape"
-                      android:textAlignment="center"
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="invisible"
+            android:id="@+id/search_tags">
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:orientation="horizontal"
                       android:gravity="center"
-                      android:hint="wpisz tag" android:id="@+id/search_tags_text"/>
-            <ImageButton android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/search_tags_button"
-                    android:layout_gravity="end"
-                         android:background="@null"
-                    android:src="@drawable/ic_search_black_24dp"/>
-        </FrameLayout>
+
+                      android:layout_marginTop="40dp">
+            <FrameLayout android:layout_width="wrap_content" android:layout_height="match_parent">
+                <EditText android:layout_width="250dp"
+                          android:layout_height="match_parent"
+                          android:background="@drawable/rounded_corners_shape"
+                          android:textAlignment="center"
+                          android:gravity="center"
+                          android:hint="wpisz tag" android:id="@+id/search_tags_text"/>
+                <!--<ImageButton android:layout_width="wrap_content"-->
+                             <!--android:layout_height="wrap_content"-->
+                             <!--android:id="@+id/search_tags_button"-->
+                             <!--android:layout_gravity="end"-->
+                             <!--android:background="@null"-->
+                             <!--android:src="@drawable/ic_search_black_24dp"/>-->
+            </FrameLayout>
+        </LinearLayout>
+        <android.support.v7.widget.RecyclerView
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/found_tags_list"
+                android:background="@drawable/rounded_corners_shape"
+        />
     </LinearLayout>
         <android.support.v4.widget.NestedScrollView
                 android:id="@+id/bottom_sheet"
@@ -75,4 +89,4 @@
             </FrameLayout>
             </LinearLayout>
         </android.support.v4.widget.NestedScrollView>
-    </android.support.design.widget.CoordinatorLayout>
+</android.support.design.widget.CoordinatorLayout>
