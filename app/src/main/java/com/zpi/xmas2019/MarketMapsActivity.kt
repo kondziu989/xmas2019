@@ -33,7 +33,12 @@ import android.provider.MediaStore.Images.Media.getBitmap
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.support.v4.content.ContextCompat
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
+import android.text.Editable
 import android.view.inputmethod.InputMethodManager
+import com.zpi.xmas2019.adapter.StallTagAdapter
+import android.text.TextWatcher
 
 
 class MarketMapsActivity : AppCompatActivity(), OnMapReadyCallback, StallDetails.OnFragmentInteractionListener {
@@ -101,12 +106,36 @@ class MarketMapsActivity : AppCompatActivity(), OnMapReadyCallback, StallDetails
             }
         }
 
-        val searchStallsButton = findViewById<ImageButton>(R.id.search_tags_button)
+        val tagSearchBox = findViewById<EditText>(R.id.search_tags_text)
 
-        searchStallsButton.setOnClickListener {
-            onSearchClick()
-            hideKeyboard()
+        tagSearchBox.afterTextChanged {
+            if(it.isNotEmpty()){
+                createTagList(searchTags((it)))
+            } else {
+                createTagList(ArrayList())
+            }
         }
+
+//        val searchStallsButton = findViewById<ImageButton>(R.id.search_tags_button)
+
+//        searchStallsButton.setOnClickListener {
+//            onSearchClick()
+//            hideKeyboard()
+//        }
+    }
+
+    fun EditText.afterTextChanged(afterTextChanged: (String) -> Unit) {
+        this.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun afterTextChanged(editable: Editable?) {
+                afterTextChanged.invoke(editable.toString())
+            }
+        })
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -116,6 +145,7 @@ class MarketMapsActivity : AppCompatActivity(), OnMapReadyCallback, StallDetails
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean{
         if(item.itemId == R.id.app_bar_search){
+            bottom_sheet.visibility=View.INVISIBLE
             searchBarVisible = !searchBarVisible
 //            Log.i("Visible", searchBarVisible.toString())
             val searchTags = findViewById<LinearLayout>(R.id.search_tags)
@@ -195,8 +225,6 @@ class MarketMapsActivity : AppCompatActivity(), OnMapReadyCallback, StallDetails
     }
 
     fun dummyFilter(){
-        searchTags("cz")
-        searchTags("pierniki")
 
         with(mMap){
             if(showArt or showAll){
@@ -294,6 +322,31 @@ class MarketMapsActivity : AppCompatActivity(), OnMapReadyCallback, StallDetails
         return foundStals as ArrayList<DummyStalls.Stall>
     }
 
+    fun createTagList(tags : ArrayList<String>){
+        val tagsList = findViewById<RecyclerView>(R.id.found_tags_list)
+        tagsList.layoutManager = LinearLayoutManager(this)
+        tagsList.adapter = StallTagAdapter(tags, this)
+        (tagsList.adapter as StallTagAdapter).onItemClick = { it ->
+            val temp = ArrayList<String>()
+            temp.add(it)
+            stalls = searchStalls(temp)
+            Log.i("Stall", temp.toString())
+            Log.i("Stall", stalls.count().toString())
+            val searchBox = findViewById<EditText>(R.id.search_tags_text)
+            searchBox.text = Editable.Factory.getInstance().newEditable(it)
+            searchBox.setSelection(searchBox.text.length)
+            val searchTagsBox = findViewById<LinearLayout>(R.id.search_tags)
+            searchTagsBox.visibility = View.INVISIBLE
+            bottom_sheet.visibility=View.INVISIBLE
+            hideKeyboard()
+            mMap.clear()
+            with(mMap){
+                createMarkers(stalls).forEach { addMarker(it) }
+            }
+            setUpMap()
+        }
+    }
+
     fun createMarkers(stalls : ArrayList<DummyStalls.Stall>) : ArrayList<MarkerOptions> {
         return stalls.map {
             val height = 140
@@ -311,14 +364,16 @@ class MarketMapsActivity : AppCompatActivity(), OnMapReadyCallback, StallDetails
         keyboard.hideSoftInputFromWindow(searchTags.windowToken, 0)
     }
 
-    fun onSearchClick(){
-        val searchBar = findViewById<EditText>(R.id.search_tags_text)
-        stalls = searchStalls(searchTags(searchBar.text.toString()))
-        with(mMap){
-            createMarkers(stalls).forEach { addMarker(it) }
-        }
-        setUpMap()
-    }
+//    fun onSearchClick(){
+//        val searchBar = findViewById<EditText>(R.id.search_tags_text)
+//        val tags = searchTags(searchBar.text.toString())
+//        stalls = searchStalls(tags)
+//
+//        with(mMap){
+//            createMarkers(stalls).forEach { addMarker(it) }
+//        }
+//        setUpMap()
+//    }
 
     override fun onBackPressed() {
         val sheetBehavior = BottomSheetBehavior.from<NestedScrollView>(bottom_sheet)
