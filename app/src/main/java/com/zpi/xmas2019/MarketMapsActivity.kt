@@ -54,6 +54,7 @@ class MarketMapsActivity : AppCompatActivity(), OnMapReadyCallback, StallDetails
     private var showArt: Boolean = false
     private var stalls = ArrayList<DummyStalls.Stall>()
     private var searchBarVisible = false
+    private var markers = ArrayList<Marker>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -339,11 +340,11 @@ class MarketMapsActivity : AppCompatActivity(), OnMapReadyCallback, StallDetails
             searchTagsBox.visibility = View.INVISIBLE
             bottom_sheet.visibility=View.INVISIBLE
             hideKeyboard()
-            mMap.clear()
+            markers.forEach{ it.remove()}
             with(mMap){
-                createMarkers(stalls).forEach { addMarker(it) }
+                createMarkers(stalls).forEach { markers.add(addMarker(it)) }
             }
-            setUpMap()
+            //setUpMap()
         }
     }
 
