@@ -54,8 +54,7 @@ class Events_ActivityCalendar : Activity() {
     }
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
-            val intent = Intent(this@Events_ActivityCalendar, EventsActivity::class.java)
-            startActivity(intent)
+            finish()
             return true
         }
         return super.onKeyDown(keyCode, event)
