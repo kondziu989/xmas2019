@@ -341,6 +341,7 @@ class MarketMapsActivity : AppCompatActivity(), OnMapReadyCallback, StallDetails
             bottom_sheet.visibility=View.INVISIBLE
             hideKeyboard()
             markers.forEach{ it.remove()}
+            markers.clear()
             with(mMap){
                 createMarkers(stalls).forEach { markers.add(addMarker(it)) }
             }
