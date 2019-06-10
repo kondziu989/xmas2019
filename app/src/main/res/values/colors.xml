@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="colorPrimary">#FF0000</color>
-    <color name="colorPrimaryDark">#FF3131</color>
+    <color name="colorPrimary">#9C1A2D</color>
+    <color name="colorPrimaryDark">#711225</color>
     <color name="colorAccent">#74D680</color>
     <color name="white">#FFFFFF</color>
-    <color name="colorPrimaryLight">#FF7878</color>
+    <color name="colorPrimaryLight">#FF5A5A</color>
     <color name="yellowTransparent">#BFFFEB3B</color>
     <color name="yellow">#FFEB3B</color>
+    <color name="gray">#B3707070</color>
     <!--Calendar colors -->
     <color name="CalendarWeeksColor">#F4BD37</color>
     <color name="CalendarDaysColor">#FFFF</color>
