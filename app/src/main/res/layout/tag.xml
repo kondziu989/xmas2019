@@ -11,6 +11,6 @@
             android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="32dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="32dp"
-            android:background="@drawable/rounded_corners_shape"
+            android:background="@drawable/tag_background"
     />
 </android.support.constraint.ConstraintLayout>
