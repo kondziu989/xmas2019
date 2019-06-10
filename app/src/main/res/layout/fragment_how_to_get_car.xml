@@ -21,6 +21,7 @@
             android:text="Przejdź do nawigacji w Google Maps"
             android:layout_width="wrap_content"
             android:layout_height="17dp"
+            android:textSize="14dp"
             app:layout_constraintStart_toStartOf="parent"
             android:id="@+id/open_googlemaps_link"
             app:layout_constraintBottom_toBottomOf="parent"
