@@ -23,7 +23,7 @@ class StallTagAdapter @Inject constructor( val tags :ArrayList<String>, val cont
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.itemView.tag_row.text = tags.get(position)
-        holder.itemView.tag_row.textSize = 15F
+        holder.itemView.tag_row.textSize = 18F
     }
 
     inner class ViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {

@@ -1,7 +1,9 @@
 
 package com.zpi.xmas2019
 
+import android.Manifest
 import android.content.Context
+import android.content.pm.PackageManager
 import android.net.Uri
 import android.opengl.Visibility
 import android.support.v7.app.AppCompatActivity
@@ -32,6 +34,7 @@ import android.graphics.Canvas
 import android.provider.MediaStore.Images.Media.getBitmap
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
+import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
